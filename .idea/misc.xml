@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="../../../../layout/custom_preview.xml" value="0.19947916666666668" />
+        <entry key="..\:/Users/sumon/Documents/RestaurantApp/app/src/main/res/drawable/create_account_edit.xml" value="0.1465" />
+        <entry key="..\:/Users/sumon/Documents/RestaurantApp/app/src/main/res/drawable/edit_text_bg.xml" value="0.1465" />
+        <entry key="..\:/Users/sumon/Documents/RestaurantApp/app/src/main/res/drawable/line.xml" value="0.1465" />
+        <entry key="..\:/Users/sumon/Documents/RestaurantApp/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Users/sumon/Documents/RestaurantApp/app/src/main/res/layout/item_shop.xml" value="0.209375" />
+        <entry key="..\:/Users/sumon/Documents/RestaurantApp/app/src/main/res/layout/shop_detail_fragment.xml" value="0.209375" />
+        <entry key="..\:/Users/sumon/Documents/RestaurantApp/app/src/main/res/layout/shops_fragment.xml" value="0.22" />
+        <entry key="..\:/Users/sumon/Documents/ShopApp/app/src/main/res/drawable-v24/based_on_background.xml" value="0.1465" />
+        <entry key="..\:/Users/sumon/Documents/ShopApp/app/src/main/res/drawable/ic_baseline_arrow_back_ios_24.xml" value="0.1465" />
+        <entry key="..\:/Users/sumon/Documents/ShopApp/app/src/main/res/layout/activity_main.xml" value="0.209375" />
+        <entry key="..\:/Users/sumon/Documents/ShopApp/app/src/main/res/layout/activity_splash.xml" value="0.209375" />
+        <entry key="..\:/Users/sumon/Documents/ShopApp/app/src/main/res/layout/item_shop.xml" value="0.22" />
+        <entry key="..\:/Users/sumon/Documents/ShopApp/app/src/main/res/layout/shimmer_layout.xml" value="0.209375" />
+        <entry key="..\:/Users/sumon/Documents/ShopApp/app/src/main/res/layout/shop_detail_fragment.xml" value="0.209375" />
+        <entry key="..\:/Users/sumon/Documents/ShopApp/app/src/main/res/layout/shops_fragment.xml" value="0.209375" />
+        <entry key="app/src/main/res/drawable-v24/ic_baseline_location_on_24.xml" value="0.1455" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.14221014492753623" />
+        <entry key="app/src/main/res/layout/activity_restaurant_location.xml" value="0.14583333333333334" />
+        <entry key="app/src/main/res/layout/activity_splash.xml" value="0.14583333333333334" />
+        <entry key="app/src/main/res/layout/bottom_nav_bar.xml" value="0.14583333333333334" />
+        <entry key="app/src/main/res/layout/character_detail_fragment.xml" value="0.14221014492753623" />
+        <entry key="app/src/main/res/layout/characters_fragment.xml" value="0.14221014492753623" />
+        <entry key="app/src/main/res/layout/fragment_location.xml" value="0.14583333333333334" />
+        <entry key="app/src/main/res/layout/fragment_shop_list.xml" value="0.14583333333333334" />
+        <entry key="app/src/main/res/layout/item_character.xml" value="0.14221014492753623" />
+        <entry key="app/src/main/res/layout/item_shop.xml" value="0.14583333333333334" />
+        <entry key="app/src/main/res/layout/shimmer_layout.xml" value="0.18" />
+        <entry key="app/src/main/res/layout/shop_detail_fragment.xml" value="0.14583333333333334" />
+        <entry key="app/src/main/res/layout/shops_fragment.xml" value="0.22" />
+        <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.17135416666666667" />
+        <entry key="app/src/main/res/xml/network_security_config.xml" value="0.14583333333333334" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
