@@ -9,7 +9,10 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="89068e81-a811-4b84-9057-6d22ce5ea31e" name="Default Changelist" comment="" />
+    <list default="true" id="89068e81-a811-4b84-9057-6d22ce5ea31e" name="Default Changelist" comment="new repository add">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/restaurant/presentration/map/LocationFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/restaurant/presentration/map/LocationFragment.kt" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -27,6 +30,9 @@
         <option value="Kotlin Class" />
       </list>
     </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="27n3VBc1avGt2ZxiMY5j4Z2wCDH" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -137,6 +143,30 @@
       <option name="presentableId" value="Default" />
       <updated>1649942043721</updated>
     </task>
+    <task id="LOCAL-00001" summary="new repository add">
+      <created>1649961553803</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1649961553813</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="new repository add" />
+    <option name="LAST_COMMIT_MESSAGE" value="new repository add" />
   </component>
 </project>

@@ -2,10 +2,13 @@ package com.example.restaurant.presentration.map
 
 import android.Manifest
 import android.content.pm.PackageManager
+import android.location.Address
+import android.location.Geocoder
 import android.location.Location
 import android.os.Build
 import android.os.Bundle
 import android.os.Looper
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -25,6 +28,7 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.*
 import dagger.hilt.android.AndroidEntryPoint
+import java.util.*
 
 @AndroidEntryPoint
 class LocationFragment : Fragment() , OnMapReadyCallback {
@@ -173,11 +177,35 @@ class LocationFragment : Fragment() , OnMapReadyCallback {
         val latLng = LatLng(currentLocation.latitude, currentLocation.longitude)
         if (currentLocationMarker == null) currentLocationMarker = googleMap!!.addMarker(
             MarkerOptions().icon(BitmapDescriptorFactory.defaultMarker()).position(latLng)
+                .title(getCompleteAddressString(currentLocation.latitude,currentLocation.longitude))
         ) else MarkerAnimation.animateMarkerToGB(
             currentLocationMarker,
             latLng,
             LatLngInterPolator.Spherical()
         )
+    }
+
+    private fun getCompleteAddressString(LATITUDE: Double, LONGITUDE: Double): String? {
+        var strAdd = ""
+        val geocoder = Geocoder(requireContext(), Locale.getDefault())
+        try {
+            val addresses: List<Address>? = geocoder.getFromLocation(LATITUDE, LONGITUDE, 1)
+            if (addresses != null) {
+                val returnedAddress: Address = addresses[0]
+                val strReturnedAddress = StringBuilder("")
+                for (i in 0..returnedAddress.getMaxAddressLineIndex()) {
+                    strReturnedAddress.append(returnedAddress.getAddressLine(i)).append("\n")
+                }
+                strAdd = strReturnedAddress.toString()
+                Log.d("Current Location", strReturnedAddress.toString())
+            } else {
+                Log.d("Current Location", "No Address returned!")
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
+            Log.d("Current Location", "Canont get Address!")
+        }
+        return strAdd
     }
 
     override fun onStop() {
