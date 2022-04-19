@@ -73,7 +73,8 @@ class RestaurantLocationActivity : AppCompatActivity(),OnMapReadyCallback {
     }
 
 
-    private fun getCompleteAddressString(LATITUDE: Double, LONGITUDE: Double): String? {
+    private fun getCompleteAddressString(LATITUDE: Double, LONGITUDE: Double):
+            String? {
         var strAdd = ""
         val geocoder = Geocoder(this, Locale.getDefault())
         try {

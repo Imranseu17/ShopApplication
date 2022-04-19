@@ -29,6 +29,7 @@ class ShopsearchFragment : Fragment(), ShopsAdapter.ShopItemListener {
     private val viewModel: ShopsearchViewModel by viewModels()
     private lateinit var adapter: ShopsAdapter
     private  var list = ArrayList<Shop>()
+    private var searchHistoryList = ArrayList<CharSequence?>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -51,6 +52,7 @@ class ShopsearchFragment : Fragment(), ShopsAdapter.ShopItemListener {
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 adapter.filter.filter(s)
+                searchHistoryList.add(s)
             }
         })
         getView()?.setFocusableInTouchMode(true)

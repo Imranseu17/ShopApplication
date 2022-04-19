@@ -14,4 +14,5 @@
 
     <color name="colorError">#b00020</color>
     <color name="colorOnPrimary">#ffffff</color>
+    <color name="mainText">#222222</color>
 </resources>

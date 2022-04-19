@@ -1,14 +1,12 @@
 <component name="libraryTable">
   <library name="Gradle: com.google.android.gms:play-services-places-placereport:16.0.0@aar">
     <CLASSES>
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/0e44bd69d401da4d16e0bfc94d1be73d/transformed/jetified-play-services-places-placereport-16.0.0/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/886ee9d31ed2e254e5e0f1e5361064f9/transformed/jetified-play-services-places-placereport-16.0.0/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/2526021c4313f25337399d1bf434df17/transformed/jetified-play-services-places-placereport-16.0.0/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/4f5b1a678c398a6a6f044764bb9378ea/transformed/jetified-play-services-places-placereport-16.0.0/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/9b877da20a03de2b4d8f97f8f6369eee/transformed/jetified-play-services-places-placereport-16.0.0/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/293587bdbcdee05ad04fc63fe993436c/transformed/jetified-play-services-places-placereport-16.0.0/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/293587bdbcdee05ad04fc63fe993436c/transformed/jetified-play-services-places-placereport-16.0.0/AndroidManifest.xml" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/293587bdbcdee05ad04fc63fe993436c/transformed/jetified-play-services-places-placereport-16.0.0/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/437d45059f6cf00a258889c84fbe46a7/transformed/jetified-play-services-places-placereport-16.0.0/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/d259a997fdd8b5d48ece8b40c245a661/transformed/jetified-play-services-places-placereport-16.0.0/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/c346843975f276b1f61996c3f72280b0/transformed/jetified-play-services-places-placereport-16.0.0/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/ccd84e8cfb9f929e5cc093a03979e731/transformed/jetified-play-services-places-placereport-16.0.0/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/ccd84e8cfb9f929e5cc093a03979e731/transformed/jetified-play-services-places-placereport-16.0.0/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/ccd84e8cfb9f929e5cc093a03979e731/transformed/jetified-play-services-places-placereport-16.0.0/res" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

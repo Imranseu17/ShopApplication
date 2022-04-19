@@ -13,26 +13,43 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/searchNameEt"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginTop="@dimen/_10sdp"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
-            android:background="@drawable/edit_text_bg"
-            android:drawableRight="@null"
-            android:fontFamily="sans-serif-condensed-light"
-            android:hint="search by name or address ..."
-            android:inputType="text"
-            android:maxLines="1"
-            android:padding="@dimen/_10sdp"
-            android:paddingLeft="30dp"
-            android:paddingRight="20dp"
-            android:textAlignment="center"
-            android:textColor="@android:color/black"
-            android:textColorHint="@android:color/black"
-            android:textSize="15sp" />
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/searchNameEt"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/edit_text_bg"
+                android:drawableRight="@null"
+                android:fontFamily="sans-serif-condensed-light"
+                android:hint="search by name or address ..."
+                android:inputType="text"
+                android:maxLines="1"
+                android:padding="@dimen/_10sdp"
+                android:paddingLeft="30dp"
+                android:paddingRight="20dp"
+                android:textAlignment="center"
+                android:textColor="@android:color/black"
+                android:textColorHint="@android:color/black"
+                android:textSize="15sp" />
+
+            <ImageView
+                android:id="@+id/search_history"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="5dp"
+                android:src="@drawable/ic_baseline_history_24"/>
+
+        </LinearLayout>
+
+
 
         <LinearLayout
             android:layout_width="match_parent"

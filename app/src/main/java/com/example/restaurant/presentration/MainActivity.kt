@@ -1,5 +1,6 @@
 package com.example.restaurant.presentration
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
@@ -11,6 +12,7 @@ import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupWithNavController
 import com.example.restaurant.R
 import com.example.restaurant.databinding.ActivityMainBinding
+import com.example.restaurant.presentration.map.UserLocationActivity
 import com.example.restaurant.usecase.BottomNavBar
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -31,9 +33,18 @@ class MainActivity : AppCompatActivity() {
         val bottomNavBar:  BottomNavBar.OnBottomNavigationListener  =
             BottomNavBar.OnBottomNavigationListener {
                 when (it.getItemId()) {
-                    R.id.restaurant_data -> navController.navigate(R.id.shop_list_fragment)
-                    R.id.restaurant_search_data -> navController.navigate(R.id.restaurant_list_search)
-                    R.id.map_location -> navController.navigate(R.id.map_location)
+                    R.id.restaurant_data -> {
+                        binding.mapLocation.visibility = View.VISIBLE
+                        navController.navigate(R.id.shop_list_fragment)
+                    }
+                    R.id.restaurant_search_data ->{
+                        binding.mapLocation.visibility = View.VISIBLE
+                        navController.navigate(R.id.restaurant_list_search)
+                    }
+                    R.id.account ->{
+                        binding.mapLocation.visibility = View.GONE
+                        navController.navigate(R.id.account)
+                    }
 
                 }
                 NavigationUI.onNavDestinationSelected(it, navController)
@@ -54,7 +65,9 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-
+        binding.mapLocation.setOnClickListener {
+            startActivity(Intent(this,UserLocationActivity::class.java))
+        }
 
 
     }

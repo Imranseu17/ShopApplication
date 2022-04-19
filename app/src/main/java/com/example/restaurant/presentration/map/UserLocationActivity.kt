@@ -9,16 +9,13 @@ import android.os.Build
 import android.os.Bundle
 import android.os.Looper
 import android.util.Log
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.example.restaurant.R
-import com.example.restaurant.databinding.FragmentLocationBinding
-import com.example.restaurant.usecase.autoCleared
+import com.example.restaurant.databinding.ActivityUserLocationBinding
 import com.google.android.gms.common.ConnectionResult
 import com.google.android.gms.common.GoogleApiAvailability
 import com.google.android.gms.location.*
@@ -30,10 +27,11 @@ import com.google.android.gms.maps.model.*
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.*
 
-@AndroidEntryPoint
-class LocationFragment : Fragment() , OnMapReadyCallback {
 
-    private var binding: FragmentLocationBinding by autoCleared()
+@AndroidEntryPoint
+class UserLocationActivity : AppCompatActivity() ,OnMapReadyCallback{
+
+    private lateinit var binding: ActivityUserLocationBinding
 
     private val MY_PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 5445
 
@@ -42,6 +40,7 @@ class LocationFragment : Fragment() , OnMapReadyCallback {
     private var currentLocationMarker: Marker? = null
     private var currentLocation: Location? = null
     private var firstTimeFlag = true
+    var PROXIMITY_RADIUS = 500
 
 
     private val mLocationCallback: LocationCallback = object : LocationCallback() {
@@ -56,24 +55,16 @@ class LocationFragment : Fragment() , OnMapReadyCallback {
             showMarker(currentLocation!!)
         }
     }
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-
-        binding = FragmentLocationBinding.inflate(inflater, container, false)
-        return binding.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = ActivityUserLocationBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         loadPermissions(
             Manifest.permission.ACCESS_FINE_LOCATION,
             1
         )
 
-        val mapMessageLocation =  childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
+        val mapMessageLocation = supportFragmentManager.findFragmentById(R.id.map) as   SupportMapFragment
         mapMessageLocation.getMapAsync(this);
 
         binding?.currentLocationImageButton?.setOnClickListener(View.OnClickListener {
@@ -81,23 +72,24 @@ class LocationFragment : Fragment() , OnMapReadyCallback {
                 animateCamera(currentLocation!!)
             }
         })
+
+        binding?.nearbyrestaurant?.setOnClickListener(View.OnClickListener {
+            if(googleMap != null && currentLocation != null){
+                val sbValue:StringBuilder =
+                    StringBuilder(nearbyRestaurant(currentLocation!!.latitude,currentLocation!!.longitude))
+                val placesTask = PlacesTask()
+                placesTask.execute(sbValue.toString())
+            }
+        })
     }
 
     private fun loadPermissions(perm: String, requestCode: Int) {
-        if (ContextCompat.checkSelfPermission(requireContext(), perm) != PackageManager.PERMISSION_GRANTED) {
-            if (!ActivityCompat.shouldShowRequestPermissionRationale(requireActivity(), perm)) {
-                ActivityCompat.requestPermissions(requireActivity(), arrayOf(perm), requestCode)
+        if (ContextCompat.checkSelfPermission(this, perm) != PackageManager.PERMISSION_GRANTED) {
+            if (!ActivityCompat.shouldShowRequestPermissionRationale(this, perm)) {
+                ActivityCompat.requestPermissions(this, arrayOf(perm), requestCode)
             }
         }
     }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-    }
-
-
-
-
 
     override fun onMapReady(googleMap: GoogleMap) {
         this.googleMap = googleMap;
@@ -109,15 +101,15 @@ class LocationFragment : Fragment() , OnMapReadyCallback {
         locationRequest.setInterval(3000)
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (ActivityCompat.checkSelfPermission(
-                    requireContext(),
+                    this,
                     Manifest.permission.ACCESS_FINE_LOCATION
                 ) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
-                    requireContext(),
+                    this,
                     Manifest.permission.ACCESS_COARSE_LOCATION
                 ) != PackageManager.PERMISSION_GRANTED
             ) {
                 ActivityCompat.requestPermissions(
-                    requireActivity(), arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
+                    this, arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
                     MY_PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION
                 )
                 return
@@ -131,10 +123,10 @@ class LocationFragment : Fragment() , OnMapReadyCallback {
 
     private fun isGooglePlayServicesAvailable(): Boolean {
         val googleApiAvailability = GoogleApiAvailability.getInstance()
-        val status = googleApiAvailability.isGooglePlayServicesAvailable(requireContext())
+        val status = googleApiAvailability.isGooglePlayServicesAvailable(this)
         if (ConnectionResult.SUCCESS == status) return true else {
             if (googleApiAvailability.isUserResolvableError(status)) Toast.makeText(
-                requireContext(),
+                this,
                 "Please Install google play services to use this application",
                 Toast.LENGTH_LONG
             ).show()
@@ -150,7 +142,7 @@ class LocationFragment : Fragment() , OnMapReadyCallback {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         if (requestCode == MY_PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION) {
             if (grantResults[0] == PackageManager.PERMISSION_DENIED) Toast.makeText(
-                requireContext(),
+                this,
                 "Permission denied by uses",
                 Toast.LENGTH_SHORT
             )
@@ -179,7 +171,7 @@ class LocationFragment : Fragment() , OnMapReadyCallback {
             MarkerOptions().icon(BitmapDescriptorFactory.defaultMarker()).position(latLng)
                 .title(getCompleteAddressString(currentLocation.latitude,currentLocation.longitude))
         ) else MarkerAnimation.animateMarkerToGB(
-            currentLocationMarker,
+            currentLocationMarker!!,
             latLng,
             LatLngInterPolator.Spherical()
         )
@@ -187,7 +179,7 @@ class LocationFragment : Fragment() , OnMapReadyCallback {
 
     private fun getCompleteAddressString(LATITUDE: Double, LONGITUDE: Double): String? {
         var strAdd = ""
-        val geocoder = Geocoder(requireContext(), Locale.getDefault())
+        val geocoder = Geocoder(this, Locale.getDefault())
         try {
             val addresses: List<Address>? = geocoder.getFromLocation(LATITUDE, LONGITUDE, 1)
             if (addresses != null) {
@@ -218,7 +210,7 @@ class LocationFragment : Fragment() , OnMapReadyCallback {
     override fun onResume() {
         super.onResume()
         if (isGooglePlayServicesAvailable()) {
-            fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(requireContext())
+            fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this)
             startCurrentLocationUpdates()
         }
     }
@@ -231,6 +223,17 @@ class LocationFragment : Fragment() , OnMapReadyCallback {
 
 
 
+    private fun nearbyRestaurant(mLatitude:Double,mLongitude:Double):StringBuilder{
+        val sb =
+            java.lang.StringBuilder("https://maps.googleapis.com/maps/api/place/search/json?")
+        sb.append("location=$mLatitude,$mLongitude")
+        sb.append("&radius=5000")
+        sb.append("&sensor=true")
+        sb.append("&key="+getString(R.string.my_api_key))
+        sb.append("&types=" + "restaurant")
 
+        Log.d("Map", "api: $sb")
 
+        return sb
+    }
 }

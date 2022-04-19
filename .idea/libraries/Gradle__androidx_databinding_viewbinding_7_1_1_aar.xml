@@ -1,14 +1,12 @@
 <component name="libraryTable">
   <library name="Gradle: androidx.databinding:viewbinding:7.1.1@aar">
     <CLASSES>
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/a5017b09fc910a2a42016a524ea9b2ec/transformed/jetified-viewbinding-7.1.1/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/973b9906b3b659380ec84cf2d4abba1e/transformed/jetified-viewbinding-7.1.1/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/84483da13b66f75c101665246cf6924b/transformed/jetified-viewbinding-7.1.1/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/c64e2c6ce3403804fce19d84b5be204d/transformed/jetified-viewbinding-7.1.1/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/ac30ce8e97893d69ac33e54c3373f707/transformed/jetified-viewbinding-7.1.1/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/77b28d7bd05f03ab5030a5580d8dd89d/transformed/jetified-viewbinding-7.1.1/res" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/77b28d7bd05f03ab5030a5580d8dd89d/transformed/jetified-viewbinding-7.1.1/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/77b28d7bd05f03ab5030a5580d8dd89d/transformed/jetified-viewbinding-7.1.1/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/86a93dd68feaad008a14825f38a863a5/transformed/jetified-viewbinding-7.1.1/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/2ae5d4e57df1099e75fbf50a55e30c9d/transformed/jetified-viewbinding-7.1.1/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/94539665d6f26ef991217c32522d70c6/transformed/jetified-viewbinding-7.1.1/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/a61103f31d71c85545ecd0f5d288d30f/transformed/jetified-viewbinding-7.1.1/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/a61103f31d71c85545ecd0f5d288d30f/transformed/jetified-viewbinding-7.1.1/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/a61103f31d71c85545ecd0f5d288d30f/transformed/jetified-viewbinding-7.1.1/res" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>
