@@ -1,6 +1,10 @@
 package com.example.restaurant.presentration.ShopSearch
 
+import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
+import android.os.Handler
+import android.preference.PreferenceManager
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.KeyEvent
@@ -16,26 +20,28 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.restaurant.R
 import com.example.restaurant.data.entities.Shop
-import com.example.restaurant.databinding.ShopsFragmentBinding
+import com.example.restaurant.databinding.ShopSearchFragmentBinding
+import com.example.restaurant.presentration.searchHistory.SearchHistoryActivity
 import com.example.restaurant.usecase.Constant
 import com.example.restaurant.usecase.Resource
 import com.example.restaurant.usecase.autoCleared
+import com.google.gson.Gson
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class ShopsearchFragment : Fragment(), ShopsAdapter.ShopItemListener {
 
-    private var binding: ShopsFragmentBinding  by autoCleared()
+    private var binding: ShopSearchFragmentBinding  by autoCleared()
     private val viewModel: ShopsearchViewModel by viewModels()
     private lateinit var adapter: ShopsAdapter
     private  var list = ArrayList<Shop>()
-    private var searchHistoryList = ArrayList<CharSequence?>()
+    private var searchHistoryList = ArrayList<String?>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = ShopsFragmentBinding.inflate(inflater, container, false)
+        binding = ShopSearchFragmentBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -52,9 +58,17 @@ class ShopsearchFragment : Fragment(), ShopsAdapter.ShopItemListener {
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 adapter.filter.filter(s)
-                searchHistoryList.add(s)
+                Handler().postDelayed(Runnable
+                {
+                    searchHistoryList.add(s.toString())
+                    saveArrayList(searchHistoryList,"search_history_list")
+                }, 5 * 1000
+                )
             }
         })
+        binding.searchHistory.setOnClickListener {
+            startActivity(Intent(requireContext(),SearchHistoryActivity::class.java))
+        }
         getView()?.setFocusableInTouchMode(true)
         getView()?.requestFocus()
         getView()?.setOnKeyListener(object : View.OnKeyListener {
@@ -113,6 +127,15 @@ class ShopsearchFragment : Fragment(), ShopsAdapter.ShopItemListener {
   override fun onResume() {
         super.onResume()
         binding.shimmerViewContainer.startShimmerAnimation()
+    }
+
+    fun saveArrayList(list: ArrayList<String?>, key: String?) {
+        val prefs: SharedPreferences = PreferenceManager.getDefaultSharedPreferences(activity)
+        val editor: SharedPreferences.Editor = prefs.edit()
+        val gson = Gson()
+        val json: String = gson.toJson(list)
+        editor.putString(key, json)
+        editor.apply()
     }
 
 

@@ -4,9 +4,9 @@
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/5a21886384dccf80137a7f45c292e3ac/transformed/asynclayoutinflater-1.0.0/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/14c9cecf0085f9f533ec88a7a60bc056/transformed/asynclayoutinflater-1.0.0/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/66e4905c562f7b4342c8db44243474e4/transformed/asynclayoutinflater-1.0.0/res" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/0c4beed184190ccfbe37c06cfed18d7f/transformed/asynclayoutinflater-1.0.0/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/0c4beed184190ccfbe37c06cfed18d7f/transformed/asynclayoutinflater-1.0.0/AndroidManifest.xml" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/0c4beed184190ccfbe37c06cfed18d7f/transformed/asynclayoutinflater-1.0.0/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/66e4905c562f7b4342c8db44243474e4/transformed/asynclayoutinflater-1.0.0/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/66e4905c562f7b4342c8db44243474e4/transformed/asynclayoutinflater-1.0.0/jars/classes.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

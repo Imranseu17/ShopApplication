@@ -15,9 +15,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.restaurant.R
 import com.example.restaurant.data.entities.Shop
 import com.example.restaurant.databinding.FragmentShopListBinding
-import com.example.restaurant.databinding.ShopsFragmentBinding
-import com.example.restaurant.presentration.ShopSearch.ShopsAdapter
-import com.example.restaurant.presentration.ShopSearch.ShopsearchViewModel
 import com.example.restaurant.usecase.Constant
 import com.example.restaurant.usecase.Resource
 import com.example.restaurant.usecase.autoCleared
