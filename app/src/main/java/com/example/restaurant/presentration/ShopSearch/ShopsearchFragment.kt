@@ -1,5 +1,7 @@
 package com.example.restaurant.presentration.ShopSearch
 
+import android.R.attr
+import android.app.Activity.RESULT_OK
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
@@ -29,6 +31,7 @@ import com.example.restaurant.usecase.autoCleared
 import com.google.gson.Gson
 import dagger.hilt.android.AndroidEntryPoint
 
+
 @AndroidEntryPoint
 class ShopsearchFragment : Fragment(), ShopsAdapter.ShopItemListener {
 
@@ -50,14 +53,6 @@ class ShopsearchFragment : Fragment(), ShopsAdapter.ShopItemListener {
         super.onViewCreated(view, savedInstanceState)
         setupRecyclerView()
         setupObservers()
-        val prefs: SharedPreferences = PreferenceManager.getDefaultSharedPreferences(context)
-        Log.e("position value get ", prefs.getString("data","")!!)
-        if(!prefs.getString("data","").equals("")){
-            adapter.filter.filter(prefs.getString("data",""))
-            searchHistoryList.add(prefs.getString("data",""))
-            saveArrayList(searchHistoryList,"search_history_list")
-        }else{
-
             binding.searchNameEt.addTextChangedListener(object : TextWatcher {
                 override fun afterTextChanged(s: Editable?) {
                 }
@@ -71,14 +66,13 @@ class ShopsearchFragment : Fragment(), ShopsAdapter.ShopItemListener {
                     {
                         searchHistoryList.add(s.toString())
                         saveArrayList(searchHistoryList,"search_history_list")
-                    }, 2 * 1000
+                    }, 3 * 1000
                     )
                 }
             })
-        }
-
         binding.searchHistory.setOnClickListener {
-            startActivity(Intent(requireContext(),SearchHistoryActivity::class.java))
+            val intent = Intent(requireContext(),SearchHistoryActivity::class.java)
+              startActivityForResult(intent,1)
         }
         getView()?.setFocusableInTouchMode(true)
         getView()?.requestFocus()
@@ -90,6 +84,10 @@ class ShopsearchFragment : Fragment(), ShopsAdapter.ShopItemListener {
             }
         })
     }
+
+
+
+
 
     private fun setupRecyclerView() {
         adapter = ShopsAdapter(requireContext(),list,this)
@@ -149,7 +147,20 @@ class ShopsearchFragment : Fragment(), ShopsAdapter.ShopItemListener {
         editor.apply()
     }
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode === 1) {
+            if (resultCode === RESULT_OK) {
+                if(data != null){
+                    binding.searchNameEt.setText(data.getStringExtra("data"))
+                    adapter.filter.filter(data.getStringExtra("data"))
+                    searchHistoryList.add(data.getStringExtra("data"))
+                    saveArrayList(searchHistoryList,"search_history_list")
+                }
+            }
+        }
 
+    }
 
 
 }

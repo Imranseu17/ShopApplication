@@ -1,27 +1,25 @@
 package com.example.restaurant.presentration.searchHistory
 
+
+import android.R
+import android.content.Intent
 import android.content.SharedPreferences
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.preference.PreferenceManager
 import android.util.Log
 import android.view.View
-import androidx.core.content.ContentProviderCompat.requireContext
-import androidx.core.os.bundleOf
-import androidx.navigation.findNavController
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.restaurant.R
-import com.example.restaurant.databinding.ActivityMainBinding
 import com.example.restaurant.databinding.ActivitySearchHistoryBinding
-import com.example.restaurant.databinding.FragmentShopListBinding
 import com.example.restaurant.databinding.ShopSearchFragmentBinding
-import com.example.restaurant.presentration.ShopSearch.ShopsAdapter
-import com.example.restaurant.usecase.autoCleared
+import com.example.restaurant.presentration.ShopSearch.ShopsearchFragment
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import dagger.hilt.android.AndroidEntryPoint
 import java.lang.reflect.Type
-import java.util.ArrayList
+import java.util.*
+import kotlin.collections.ArrayList
+
 
 @AndroidEntryPoint
 class SearchHistoryActivity : AppCompatActivity(),RecyclerViewClickListener {
@@ -33,6 +31,7 @@ class SearchHistoryActivity : AppCompatActivity(),RecyclerViewClickListener {
         binding = ActivitySearchHistoryBinding.inflate(layoutInflater)
         setContentView(binding.root)
         searchHistoryList = getArrayList("search_history_list")
+        Collections.reverse(searchHistoryList)
         setupRecyclerView()
     }
 
@@ -63,14 +62,16 @@ class SearchHistoryActivity : AppCompatActivity(),RecyclerViewClickListener {
         binding.shimmerViewContainer.startShimmerAnimation()
     }
 
-    override fun recyclerViewListClicked(v: View?, position: String) {
-        val prefs: SharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
-        val editor: SharedPreferences.Editor = prefs.edit()
-        editor.putString("data",position)
-        Log.e("position",position)
-        editor.apply()
+    override fun recyclerViewListClicked(v: View?, position: String?) {
+        val intent = Intent()
+        intent.putExtra("data",position)
+        Log.e("data: ",position!!)
+        setResult(RESULT_OK,intent);
+        finish();
        
     }
+
+
 }
 
 
