@@ -7,6 +7,7 @@ import android.os.Handler
 import android.preference.PreferenceManager
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
@@ -49,23 +50,33 @@ class ShopsearchFragment : Fragment(), ShopsAdapter.ShopItemListener {
         super.onViewCreated(view, savedInstanceState)
         setupRecyclerView()
         setupObservers()
-        binding.searchNameEt.addTextChangedListener(object : TextWatcher {
-            override fun afterTextChanged(s: Editable?) {
-            }
+        val prefs: SharedPreferences = PreferenceManager.getDefaultSharedPreferences(context)
+        Log.e("position value get ", prefs.getString("data","")!!)
+        if(!prefs.getString("data","").equals("")){
+            adapter.filter.filter(prefs.getString("data",""))
+            searchHistoryList.add(prefs.getString("data",""))
+            saveArrayList(searchHistoryList,"search_history_list")
+        }else{
 
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-            }
+            binding.searchNameEt.addTextChangedListener(object : TextWatcher {
+                override fun afterTextChanged(s: Editable?) {
+                }
 
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                adapter.filter.filter(s)
-                Handler().postDelayed(Runnable
-                {
-                    searchHistoryList.add(s.toString())
-                    saveArrayList(searchHistoryList,"search_history_list")
-                }, 5 * 1000
-                )
-            }
-        })
+                override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+                }
+
+                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                    adapter.filter.filter(s)
+                    Handler().postDelayed(Runnable
+                    {
+                        searchHistoryList.add(s.toString())
+                        saveArrayList(searchHistoryList,"search_history_list")
+                    }, 2 * 1000
+                    )
+                }
+            })
+        }
+
         binding.searchHistory.setOnClickListener {
             startActivity(Intent(requireContext(),SearchHistoryActivity::class.java))
         }

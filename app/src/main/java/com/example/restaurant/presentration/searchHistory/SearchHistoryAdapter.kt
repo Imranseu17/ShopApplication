@@ -1,40 +1,62 @@
 package com.example.restaurant.presentration.searchHistory
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.restaurant.R
-import java.util.ArrayList
+import com.example.restaurant.databinding.SearchHistoryLayoutBinding
 
-class SearchHistoryAdapter (val context: Context, val list: ArrayList<String?>) :
+class SearchHistoryAdapter () :
     RecyclerView.Adapter<SearchHistoryAdapter.HistoryAdapter>() {
 
+    private lateinit var itemList:ArrayList<String?>
+    private lateinit var context:Context
+    private lateinit var listener: RecyclerViewClickListener
 
+    constructor(context: Context, items: ArrayList<String?>, listener: RecyclerViewClickListener) : this() {
+        this.itemList = items
+        this.listener = listener
+        this.context = context
 
-    inner class HistoryAdapter(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val list_data = itemView.findViewById<TextView>(R.id.list_data)
     }
+
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HistoryAdapter {
 
-        lateinit var view: View
-
-        view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.search_history_layout, parent, false)
-
-
-        return HistoryAdapter(view)
+        val binding: SearchHistoryLayoutBinding =
+            SearchHistoryLayoutBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return HistoryAdapter(binding, listener)
     }
 
     override fun onBindViewHolder(holder: HistoryAdapter, position: Int) {
-        holder.list_data.setText(list[position])
+        holder.bind(itemList[position])
     }
 
     override fun getItemCount(): Int {
-        return list.size
+        return itemList.size
+    }
+
+    class HistoryAdapter(private val itemBinding: SearchHistoryLayoutBinding,
+                     private  val  listener: RecyclerViewClickListener) :
+        RecyclerView.ViewHolder(itemBinding.root),
+        View.OnClickListener {
+
+        init {
+            itemBinding.root.setOnClickListener(this)
+        }
+
+        @SuppressLint("SetTextI18n")
+        fun bind(item: String?) {
+            itemBinding.listData.text = item
+        }
+
+
+        override fun onClick(v: View?) {
+                listener.recyclerViewListClicked(v,itemBinding.listData.text.toString())
+        }
     }
 
 }
