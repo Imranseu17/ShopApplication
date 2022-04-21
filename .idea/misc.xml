@@ -34,6 +34,7 @@
         <entry key="app/src/main/res/layout/fragment_account.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_location.xml" value="0.14583333333333334" />
         <entry key="app/src/main/res/layout/fragment_shop_list.xml" value="0.14583333333333334" />
+        <entry key="app/src/main/res/layout/fragment_shop_list_clean.xml" value="0.12001811594202899" />
         <entry key="app/src/main/res/layout/item_character.xml" value="0.14221014492753623" />
         <entry key="app/src/main/res/layout/item_shop.xml" value="0.14583333333333334" />
         <entry key="app/src/main/res/layout/search_history_layout.xml" value="0.17135416666666667" />
