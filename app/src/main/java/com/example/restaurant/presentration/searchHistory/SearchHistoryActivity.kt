@@ -9,10 +9,12 @@ import android.preference.PreferenceManager
 import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.restaurant.databinding.ActivitySearchHistoryBinding
 import com.example.restaurant.databinding.ShopSearchFragmentBinding
 import com.example.restaurant.presentration.ShopSearch.ShopsearchFragment
+import com.example.restaurant.usecase.Constant
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import dagger.hilt.android.AndroidEntryPoint
@@ -30,6 +32,9 @@ class SearchHistoryActivity : AppCompatActivity(),RecyclerViewClickListener {
         super.onCreate(savedInstanceState)
         binding = ActivitySearchHistoryBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        binding.backButton.setOnClickListener{
+           finish()
+        }
         searchHistoryList = getArrayList("search_history_list")
         Collections.reverse(searchHistoryList)
         setupRecyclerView()

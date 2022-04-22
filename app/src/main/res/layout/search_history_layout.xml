@@ -8,17 +8,9 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#CACFD2"
+        android:background="#F0B27A"
         android:orientation="vertical">
 
-        <LinearLayout
-            android:id="@+id/list_layout"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginStart="@dimen/_10sdp"
-            android:layout_marginTop="@dimen/_10sdp"
-            android:layout_gravity="start">
 
             <TextView
                 android:id="@+id/list_data"
@@ -41,9 +33,14 @@
 
         </LinearLayout>
 
-
-
-    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="-20dp"
+        android:layout_marginEnd="-30dp"
+        android:layout_marginTop="5dp"
+        android:orientation="vertical"
+        android:background="@drawable/line" />
 
 
 
