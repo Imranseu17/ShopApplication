@@ -20,7 +20,7 @@
 
             <EditText
                 android:id="@+id/searchNameEt"
-                android:layout_width="320dp"
+                android:layout_width="325dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="@dimen/_10sdp"
                 android:layout_marginStart="10dp"
