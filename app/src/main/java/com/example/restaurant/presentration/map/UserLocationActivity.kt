@@ -225,13 +225,12 @@ class UserLocationActivity : AppCompatActivity() ,OnMapReadyCallback{
 
     private fun nearbyRestaurant(mLatitude:Double,mLongitude:Double):StringBuilder{
         val sb =
-            java.lang.StringBuilder("https://maps.googleapis.com/maps/api/place/search/json?")
+            java.lang.StringBuilder("https://maps.googleapis.com/maps/api/place/nearbysearch/json?")
         sb.append("location=$mLatitude,$mLongitude")
         sb.append("&radius=5000")
+        sb.append("&types=restaurant")
         sb.append("&sensor=true")
         sb.append("&key="+getString(R.string.my_api_key))
-        sb.append("&types=" + "restaurant")
-
         Log.d("Map", "api: $sb")
 
         return sb
