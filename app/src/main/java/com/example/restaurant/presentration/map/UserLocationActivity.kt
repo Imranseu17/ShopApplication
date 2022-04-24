@@ -78,6 +78,7 @@ class UserLocationActivity : AppCompatActivity() ,OnMapReadyCallback{
                 val sbValue:StringBuilder =
                     StringBuilder(nearbyRestaurant(currentLocation!!.latitude,currentLocation!!.longitude))
                 val placesTask = PlacesTask()
+                placesTask.mGoogleMap = googleMap
                 placesTask.execute(sbValue.toString())
             }
         })

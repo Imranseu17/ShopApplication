@@ -2,6 +2,7 @@ package com.example.restaurant.presentration.map
 
 import android.os.AsyncTask
 import android.util.Log
+import com.google.android.gms.maps.GoogleMap
 import java.io.BufferedReader
 import java.io.IOException
 import java.io.InputStream
@@ -13,6 +14,7 @@ import kotlin.Throws
 
 class PlacesTask : AsyncTask<String?, Int?, String?>() {
     var data: String? = null
+    var  mGoogleMap: GoogleMap? = null
 
     // Invoked by execute() method of this object
      override fun doInBackground(vararg url: String?): String? {
@@ -27,7 +29,7 @@ class PlacesTask : AsyncTask<String?, Int?, String?>() {
     // Executed after the complete execution of doInBackground() method
     override fun onPostExecute(result: String?) {
         val parserTask = ParserTask()
-
+        parserTask.mGoogleMap = mGoogleMap
         // Start parsing the Google places in JSON format
         // Invokes the "doInBackground()" method of the class ParserTask
         parserTask.execute(result)
