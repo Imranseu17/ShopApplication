@@ -91,16 +91,14 @@ class RestaurantLocationActivity : AppCompatActivity(),OnMapReadyCallback {
                             // Getting longitude of the place
                             val lng = hmPlace.lng
 
-                            // Getting name
-                            val name = hmPlace.address
-                            Log.d("Map", "place: $name")
+
 
                             // Getting vicinity
                             val latLng = LatLng(lat!!, lng!!)
 
                             // Setting the position for the marker
                             markerOptions.position(latLng)
-                            markerOptions.title("$name :"+getCompleteAddressString(lat,lng))
+                            markerOptions.title(getCompleteAddressString(lat,lng))
                             markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_MAGENTA))
 
                             // Placing a marker on the touched position
