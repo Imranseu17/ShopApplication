@@ -23,4 +23,22 @@ interface ShopService {
         @Query("id") id:String,
         @Query("format")format:String
     ):Response<Root>
+
+    @Headers( "Content-Type: application/json; charset=utf-8" )
+    @GET("v1")
+  suspend  fun searchShopList(
+        @Query("key") key:String,
+        @Query("keyword") keyword:String,
+        @Query("format")format:String
+    ):Response<Root>
+
+    @Headers( "Content-Type: application/json; charset=utf-8" )
+    @GET("v1")
+  suspend fun findNearbyRestaurantOfJapanese(
+        @Query("key") key:String,
+        @Query("lat") lat:Double,
+        @Query("lng") lng:Double,
+        @Query("range") range: String,
+        @Query("format")format:String
+    ):Response<Root>
 }

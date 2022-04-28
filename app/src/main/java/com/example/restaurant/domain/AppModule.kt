@@ -20,10 +20,13 @@ import javax.inject.Singleton
 @InstallIn(ApplicationComponent::class)
 object AppModule {
 
+
+    var BASE_URL = "http://webservice.recruit.co.jp/hotpepper/gourmet/"
+
     @Singleton
     @Provides
     fun provideRetrofit() = Retrofit.Builder()
-        .baseUrl("http://webservice.recruit.co.jp/hotpepper/gourmet/")
+        .baseUrl(BASE_URL)
         .addConverterFactory(JacksonConverterFactory.create())
         .build()
 
@@ -52,6 +55,8 @@ object AppModule {
     fun provideRepository(remoteDataSource: ShopRemoteDataSource,
                           localDataSource: ShopDao) =
         ShopRepository(remoteDataSource, localDataSource)
+
+
 
 
 }

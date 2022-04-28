@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".presentration.map.LocationFragment">
+    tools:context=".presentration.RestaurantLocationActivity">
 
     <fragment
         android:id="@+id/map"
@@ -12,19 +12,33 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
-    <ImageButton
-        android:id="@+id/currentLocationImageButton"
-        android:layout_width="40dp"
+    <LinearLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/dp16"
         android:layout_marginEnd="@dimen/_10sdp"
-        android:text="New request"
-        android:textColor="@color/white"
         android:layout_marginRight="@dimen/_10sdp"
         android:layout_gravity="bottom|end"
-        app:iconTint="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:src="@drawable/ic_twotone_my_location_24" />
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <ImageButton
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/currentLocationImageButton"
+            android:text="New request"
+            android:textColor="@color/white"
+            app:iconTint="@color/white"
+            android:src="@drawable/ic_twotone_my_location_24" />
+        <ImageButton
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/nearbyrestaurant"
+            android:text="New request"
+            android:textColor="@color/white"
+            app:iconTint="@color/white"
+            android:src="@drawable/ic_baseline_restaurant_24" />
+
+    </LinearLayout>
 
 </FrameLayout>

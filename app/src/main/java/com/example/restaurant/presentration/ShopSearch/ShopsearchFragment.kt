@@ -24,6 +24,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.restaurant.R
 import com.example.restaurant.data.entities.Shop
 import com.example.restaurant.databinding.ShopSearchFragmentBinding
+import com.example.restaurant.domain.AppModule
+import com.example.restaurant.presentration.apiSearch.SearchShopViewModel
 import com.example.restaurant.presentration.searchHistory.SearchHistoryActivity
 import com.example.restaurant.usecase.Constant
 import com.example.restaurant.usecase.Resource
@@ -37,6 +39,7 @@ class ShopsearchFragment : Fragment(), ShopsAdapter.ShopItemListener {
 
     private var binding: ShopSearchFragmentBinding  by autoCleared()
     private val viewModel: ShopsearchViewModel by viewModels()
+    private val viewModelSearchAPI: SearchShopViewModel by viewModels()
     private lateinit var adapter: ShopsAdapter
     private  var list = ArrayList<Shop>()
     private var searchHistoryList = ArrayList<String?>()
@@ -61,6 +64,7 @@ class ShopsearchFragment : Fragment(), ShopsAdapter.ShopItemListener {
                 }
 
                 override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                    setResult(s.toString())
                     adapter.filter.filter(s)
                     Handler().postDelayed(Runnable
                     {
@@ -93,6 +97,33 @@ class ShopsearchFragment : Fragment(), ShopsAdapter.ShopItemListener {
         adapter = ShopsAdapter(requireContext(),list,this)
         binding.shopRv.layoutManager = LinearLayoutManager(requireContext())
         binding.shopRv.adapter = adapter
+
+    }
+
+    private fun setResult(keyword:String){
+        viewModelSearchAPI.keyword = keyword
+        viewModelSearchAPI.shopSearchList.observe(viewLifecycleOwner, Observer {
+            when (it.status) {
+                Resource.Status.SUCCESS -> {
+                    binding.progressBar.visibility = View.GONE
+                    binding.shimmerViewContainer.visibility = View.GONE
+                    if (!it.data.isNullOrEmpty()){
+                        list = it.data as ArrayList<Shop>
+                        adapter.setItems(it.data)
+
+                    }
+                }
+                Resource.Status.ERROR ->{
+                    Toast.makeText(requireContext(), it.message, Toast.LENGTH_SHORT).show()
+                }
+                Resource.Status.LOADING ->{
+                    binding.progressBar.visibility = View.VISIBLE
+                    binding.shimmerViewContainer.visibility = View.VISIBLE
+                }
+
+            }
+        })
+
 
     }
 

@@ -21,4 +21,18 @@ class ShopRepository @Inject constructor(
         networkCall = { remoteDataSource.getShopList(key,large_area,format) },
         saveCallResult = { localDataSource.insertAll(it.results?.shop)}
     )
+
+    fun searchShopList(key:String, keyword:String,format:String)
+    = performGetOperation(
+    databaseQuery = { localDataSource.getAllShops() },
+    networkCall = { remoteDataSource.searchShopList(key,keyword,format) },
+    saveCallResult = { localDataSource.insertAll(it.results?.shop)}
+    )
+
+    fun findNearbyRestaurantOfJapanese(key:String, lat:Double,lng:Double,range: String,format:String)
+    = performGetOperation(
+        databaseQuery = { localDataSource.getAllShops() },
+        networkCall = { remoteDataSource.findNearbyRestaurantOfJapanese(key, lat, lng, range, format) },
+        saveCallResult = { localDataSource.insertAll(it.results?.shop)}
+    )
 }
