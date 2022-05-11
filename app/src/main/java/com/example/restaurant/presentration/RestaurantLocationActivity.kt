@@ -22,8 +22,9 @@ import java.util.*
 
 
 @AndroidEntryPoint
-class RestaurantLocationActivity : AppCompatActivity(),OnMapReadyCallback {
+class RestaurantLocationActivity : AppCompatActivity(),OnMapReadyCallback ,GoogleMap.OnMarkerClickListener{
     private var mMap: GoogleMap? = null
+    private var myMarker: Marker? = null
     private val viewModel: NearbyPlacesViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,6 +47,13 @@ class RestaurantLocationActivity : AppCompatActivity(),OnMapReadyCallback {
         findViewById<ImageButton>(R.id.currentLocationImageButton).setOnClickListener {
             if(googleMap != null && lat != null && lng != null){
                 animateCamera(lat,lng)
+                val latLng = LatLng(lat,lng)
+                mMap!!.addMarker(
+                    MarkerOptions()
+                        .position(latLng)
+                        .title(getCompleteAddressString(lat,lng)))
+                    .setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE))
+
             }
         }
         findViewById<ImageButton>(R.id.nearbyrestaurant).setOnClickListener{
@@ -54,7 +62,7 @@ class RestaurantLocationActivity : AppCompatActivity(),OnMapReadyCallback {
             }
         }
         val latLng = LatLng(lat,lng)
-        mMap!!.addMarker(
+      myMarker =   mMap!!.addMarker(
             MarkerOptions()
                 .position(latLng)
                 .title(getCompleteAddressString(lat,lng))
@@ -143,6 +151,15 @@ class RestaurantLocationActivity : AppCompatActivity(),OnMapReadyCallback {
             }
         })
 
+    }
+
+    override fun onMarkerClick(marker: Marker?): Boolean {
+        if (marker!!.equals(myMarker))
+        {
+            marker.setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE))
+            return true
+        }
+        return false
     }
 
 

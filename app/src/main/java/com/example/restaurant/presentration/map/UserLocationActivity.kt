@@ -29,7 +29,7 @@ import java.util.*
 
 
 @AndroidEntryPoint
-class UserLocationActivity : AppCompatActivity() ,OnMapReadyCallback{
+class UserLocationActivity : AppCompatActivity() ,OnMapReadyCallback,GoogleMap.OnMarkerClickListener{
 
     private lateinit var binding: ActivityUserLocationBinding
 
@@ -41,6 +41,7 @@ class UserLocationActivity : AppCompatActivity() ,OnMapReadyCallback{
     private var currentLocation: Location? = null
     private var firstTimeFlag = true
     var PROXIMITY_RADIUS = 500
+    private var myMarker: Marker? = null
 
 
     private val mLocationCallback: LocationCallback = object : LocationCallback() {
@@ -70,6 +71,12 @@ class UserLocationActivity : AppCompatActivity() ,OnMapReadyCallback{
         binding?.currentLocationImageButton?.setOnClickListener(View.OnClickListener {
             if(googleMap != null && currentLocation != null){
                 animateCamera(currentLocation!!)
+                val latLng = LatLng(currentLocation!!.latitude,currentLocation!!.longitude)
+                googleMap!!.addMarker(
+                    MarkerOptions()
+                        .position(latLng)
+                        .title(getCompleteAddressString(currentLocation!!.latitude,currentLocation!!.longitude)))
+                    .setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE))
             }
         })
 
@@ -95,6 +102,8 @@ class UserLocationActivity : AppCompatActivity() ,OnMapReadyCallback{
     override fun onMapReady(googleMap: GoogleMap) {
         this.googleMap = googleMap;
     }
+
+
 
     private fun startCurrentLocationUpdates() {
         val locationRequest: LocationRequest = LocationRequest.create()
@@ -142,12 +151,17 @@ class UserLocationActivity : AppCompatActivity() ,OnMapReadyCallback{
     ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         if (requestCode == MY_PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION) {
-            if (grantResults[0] == PackageManager.PERMISSION_DENIED) Toast.makeText(
-                this,
-                "Permission denied by uses",
-                Toast.LENGTH_SHORT
-            )
-                .show() else if (grantResults[0] == PackageManager.PERMISSION_GRANTED) startCurrentLocationUpdates()
+            try {
+                if (grantResults[0] == PackageManager.PERMISSION_DENIED) Toast.makeText(
+                    this,
+                    "Permission denied by uses",
+                    Toast.LENGTH_SHORT
+                )
+                    .show() else if (grantResults[0] == PackageManager.PERMISSION_GRANTED) startCurrentLocationUpdates()
+            }catch (e:java.lang.Exception){
+                e.printStackTrace()
+            }
+
         }
     }
 
@@ -235,5 +249,14 @@ class UserLocationActivity : AppCompatActivity() ,OnMapReadyCallback{
         Log.d("Map", "api: $sb")
 
         return sb
+    }
+
+    override fun onMarkerClick(marker: Marker?): Boolean {
+        if (marker!!.equals(myMarker))
+        {
+            marker.setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE))
+            return  true
+        }
+        return false
     }
 }
