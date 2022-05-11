@@ -64,8 +64,8 @@ class ShopsearchFragment : Fragment(), ShopsAdapter.ShopItemListener {
                 }
 
                 override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                    setResult(s.toString())
-                    //adapter.filter.filter(s)
+                   // setResult(s.toString())
+                    adapter.filter.filter(s)
                     Handler().postDelayed(Runnable
                     {
                         searchHistoryList.add(s.toString())

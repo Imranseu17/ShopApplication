@@ -8,7 +8,7 @@ class SearchShopViewModel @ViewModelInject constructor(
     private val repository: ShopRepository
 ) : ViewModel() {
 
-   lateinit var keyword:String
+    var keyword = ""
 
     val shopSearchList = repository.searchShopList("f5c06c8896e2d2d4",keyword,"json")
 }

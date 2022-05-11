@@ -4,26 +4,14 @@ import android.location.Address
 import android.location.Geocoder
 import android.os.Bundle
 import android.util.Log
-import android.view.View
 import android.widget.ImageButton
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.viewModels
-import androidx.lifecycle.LifecycleOwner
 import com.example.restaurant.R
-import com.example.restaurant.data.entities.Shop
-import com.example.restaurant.databinding.ActivityMainBinding
 import com.example.restaurant.databinding.ActivityRestaurantLocationBinding
-import com.example.restaurant.databinding.ActivityUserLocationBinding
-import com.example.restaurant.domain.AppModule
-import com.example.restaurant.presentration.ShopSearch.ShopsearchViewModel
-import com.example.restaurant.presentration.apiSearch.SearchShopViewModel
-import com.example.restaurant.presentration.list.ShopViewModel
-import com.example.restaurant.presentration.map.PlacesTask
 import com.example.restaurant.presentration.nearbyPlaces.NearbyPlacesViewModel
 import com.example.restaurant.usecase.Resource
-import com.example.restaurant.usecase.autoCleared
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -35,17 +23,19 @@ import java.util.*
 
 @AndroidEntryPoint
 class RestaurantLocationActivity : AppCompatActivity(),OnMapReadyCallback {
-    private lateinit var binding: ActivityRestaurantLocationBinding
     private var mMap: GoogleMap? = null
     private val viewModel: NearbyPlacesViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityRestaurantLocationBinding.inflate(layoutInflater)
+        setContentView(R.layout.activity_restaurant_location)
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment?
         mapFragment!!.getMapAsync(this)
+
+
+
     }
 
     override fun onMapReady(googleMap: GoogleMap?) {
@@ -53,14 +43,14 @@ class RestaurantLocationActivity : AppCompatActivity(),OnMapReadyCallback {
         mMap = googleMap
         val lat = intent.getDoubleExtra("lat",0.00)
         val lng = intent.getDoubleExtra("lng",0.00)
-        binding.currentLocationImageButton.setOnClickListener {
+        findViewById<ImageButton>(R.id.currentLocationImageButton).setOnClickListener {
             if(googleMap != null && lat != null && lng != null){
                 animateCamera(lat,lng)
             }
         }
-        binding.nearbyrestaurant.setOnClickListener{
+        findViewById<ImageButton>(R.id.nearbyrestaurant).setOnClickListener{
             if(googleMap != null && lat != null && lng != null){
-               setResult()
+                setResult()
             }
         }
         val latLng = LatLng(lat,lng)
@@ -71,48 +61,7 @@ class RestaurantLocationActivity : AppCompatActivity(),OnMapReadyCallback {
         )
         mMap!!.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng,zoomLevel))
     }
-    private fun setResult(){
 
-        viewModel.nearbyPlacesSearch.observe(this, androidx.lifecycle.Observer {
-            when(it.status){
-                Resource.Status.SUCCESS -> {
-                    if (!it.data.isNullOrEmpty()){
-                        mMap?.clear()
-                        for (i in 1 .. it.data.size){
-                            val markerOptions = MarkerOptions()
-
-                            // Getting a place from the places list
-                            val hmPlace = it.data[i]
-
-
-                            // Getting latitude of the place
-                            val lat = hmPlace.lat
-
-                            // Getting longitude of the place
-                            val lng = hmPlace.lng
-
-
-
-                            // Getting vicinity
-                            val latLng = LatLng(lat!!, lng!!)
-
-                            // Setting the position for the marker
-                            markerOptions.position(latLng)
-                            markerOptions.title(getCompleteAddressString(lat,lng))
-                            markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_MAGENTA))
-
-                            // Placing a marker on the touched position
-                            mMap!!.addMarker(markerOptions)
-                        }
-                    }
-                }
-                Resource.Status.ERROR ->{
-                    Toast.makeText(this, it.message, Toast.LENGTH_SHORT).show()
-                }
-            }
-        })
-
-    }
     private fun animateCamera(lat:Double,lng:Double) {
         val latLng = LatLng(lat,lng)
         mMap!!.animateCamera(
@@ -151,6 +100,49 @@ class RestaurantLocationActivity : AppCompatActivity(),OnMapReadyCallback {
             Log.d("Restaurant Location", "Canont get Address!")
         }
         return strAdd
+    }
+
+    private fun setResult(){
+
+        viewModel.nearbyPlacesSearch.observe(this, androidx.lifecycle.Observer {
+            when(it.status){
+                Resource.Status.SUCCESS -> {
+                    if (!it.data.isNullOrEmpty()){
+                        mMap?.clear()
+                        for (i in 1 .. it.data.size){
+                            val markerOptions = MarkerOptions()
+
+                            // Getting a place from the places list
+                            val hmPlace = it.data.get(i-1)
+
+
+                            // Getting latitude of the place
+                            val lat = hmPlace.lat
+
+                            // Getting longitude of the place
+                            val lng = hmPlace.lng
+
+
+
+                            // Getting vicinity
+                            val latLng = LatLng(lat!!, lng!!)
+
+                            // Setting the position for the marker
+                            markerOptions.position(latLng)
+                            markerOptions.title(getCompleteAddressString(lat,lng))
+                            markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_MAGENTA))
+
+                            // Placing a marker on the touched position
+                            mMap!!.addMarker(markerOptions)
+                        }
+                    }
+                }
+                Resource.Status.ERROR ->{
+                    Toast.makeText(this, it.message, Toast.LENGTH_SHORT).show()
+                }
+            }
+        })
+
     }
 
 
