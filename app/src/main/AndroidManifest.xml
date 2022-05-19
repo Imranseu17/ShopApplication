@@ -4,7 +4,7 @@
 
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -18,19 +18,22 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".presentration.restaurants.RestaurantDetailScreenActivity"
+            android:exported="false" />
+        <activity
             android:name=".presentration.searchHistory.SearchHistoryActivity"
             android:exported="false" />
         <activity
-            android:name=".presentration.map.UserLocationActivity"
+            android:name=".presentration.restaurants.RestaurantLocations"
             android:exported="false" />
         <activity
-            android:name=".presentration.RestaurantLocationActivity"
+            android:name=".presentration.nearbyPlaces.RestaurantLocationActivity"
             android:exported="false" />
         <activity
-            android:name=".presentration.MainActivity"
+            android:name=".presentration.activities.MainActivity"
             android:exported="false" />
         <activity
-            android:name=".presentration.SplashActivity"
+            android:name=".presentration.activities.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -69,6 +69,12 @@ class ShopsAdapter() :
                                 .contains(charString.lowercase(Locale.getDefault()))
                             || row.address
                                 !!.contains(charSequence)
+                            ||row.stationName
+                              !!.contains(charSequence)
+                            ||row.genre?.catch
+                              !!.contains(charSequence)
+                            ||row.catch
+                               !!.contains(charSequence)
                         ) {
                             filteredList.add(row)
                         }

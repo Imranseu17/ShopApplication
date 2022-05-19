@@ -3,6 +3,7 @@
     <CLASSES>
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/6fe087ab77a4bfad9689fc5fe71879fa/transformed/jetified-rxandroid-3.0.0/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/fbd574eb1f40faf0743d71cc76b936fc/transformed/jetified-rxandroid-3.0.0/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/f4f21edc38804431200340c8825bbf0c/transformed/jetified-rxandroid-3.0.0/res" />
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/6fe087ab77a4bfad9689fc5fe71879fa/transformed/jetified-rxandroid-3.0.0/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/6fe087ab77a4bfad9689fc5fe71879fa/transformed/jetified-rxandroid-3.0.0/AndroidManifest.xml" />
     </CLASSES>

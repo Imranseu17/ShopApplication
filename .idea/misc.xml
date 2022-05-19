@@ -19,13 +19,17 @@
         <entry key="..\:/Users/sumon/Documents/ShopApp/app/src/main/res/layout/shimmer_layout.xml" value="0.209375" />
         <entry key="..\:/Users/sumon/Documents/ShopApp/app/src/main/res/layout/shop_detail_fragment.xml" value="0.209375" />
         <entry key="..\:/Users/sumon/Documents/ShopApp/app/src/main/res/layout/shops_fragment.xml" value="0.209375" />
+        <entry key="app/src/main/res/drawable-v24/based_on_background.xml" value="0.1345" />
         <entry key="app/src/main/res/drawable-v24/ic_baseline_location_on_24.xml" value="0.1455" />
         <entry key="app/src/main/res/drawable-v24/ic_baseline_map_24.xml" value="0.1565" />
         <entry key="app/src/main/res/drawable/btn_bg.xml" value="0.1565" />
         <entry key="app/src/main/res/drawable/ic_baseline_history_24.xml" value="0.1565" />
+        <entry key="app/src/main/res/drawable/rounded.xml" value="0.1345" />
         <entry key="app/src/main/res/drawable/white_rounded_shape.xml" value="0.1565" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_restaurant_detail_screen.xml" value="0.12907608695652173" />
         <entry key="app/src/main/res/layout/activity_restaurant_location.xml" value="0.14583333333333334" />
+        <entry key="app/src/main/res/layout/activity_restaurant_locations.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_search_history.xml" value="0.17135416666666667" />
         <entry key="app/src/main/res/layout/activity_splash.xml" value="0.14583333333333334" />
         <entry key="app/src/main/res/layout/activity_user_location.xml" value="0.17135416666666667" />

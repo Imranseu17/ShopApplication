@@ -1,4 +1,4 @@
-package com.example.restaurant.presentration
+package com.example.restaurant.presentration.activities
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity

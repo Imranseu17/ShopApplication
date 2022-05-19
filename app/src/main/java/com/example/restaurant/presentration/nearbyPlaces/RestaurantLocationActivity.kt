@@ -1,4 +1,4 @@
-package com.example.restaurant.presentration
+package com.example.restaurant.presentration.nearbyPlaces
 
 import android.location.Address
 import android.location.Geocoder
@@ -9,8 +9,6 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.example.restaurant.R
-import com.example.restaurant.databinding.ActivityRestaurantLocationBinding
-import com.example.restaurant.presentration.nearbyPlaces.NearbyPlacesViewModel
 import com.example.restaurant.usecase.Resource
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap

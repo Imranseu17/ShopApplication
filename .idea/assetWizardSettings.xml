@@ -303,7 +303,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="file:$USER_HOME$/Android/Sdk/icons/material/materialicons/history/baseline_history_24.xml" />
+                                      <entry key="url" value="file:$USER_HOME$/Android/Sdk/icons/material/materialicons/minimize/baseline_minimize_24.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -313,7 +313,8 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="outputName" value="ic_baseline_history_24" />
+                            <entry key="color" value="ffffff" />
+                            <entry key="outputName" value="ic_baseline_minimize_24" />
                           </map>
                         </option>
                       </PersistentState>

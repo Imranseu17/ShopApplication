@@ -1,0 +1,1149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/container"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000">
+
+
+    <LinearLayout
+        android:id="@+id/shop_cl"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="match_parent">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="#000000"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/back_button"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/ic_baseline_arrow_back_ios_24"/>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="15dp"
+                android:textColor="#FFFFFF"
+                android:text="Restaurant Details Screen"
+                android:textSize="20sp"
+                android:fontFamily="sans-serif-light"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/show_location"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="35dp"
+                android:layout_marginTop="15dp"
+                android:src="@drawable/ic_baseline_location_on_24"/>
+
+
+        </LinearLayout>
+
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fillViewport="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/photo"
+                    android:layout_width="match_parent"
+                    android:layout_height="400dp"
+                    android:scaleType="centerCrop"
+                    android:transitionName="photoToAnimate"
+                    tools:src="@tools:sample/backgrounds/scenic" />
+
+                <TextView
+                    android:id="@+id/name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:text="name"
+                    android:fontFamily="sans-serif-light"
+                    android:textColor="#FF0000"
+                    android:textSize="20sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="-20dp"
+                    android:layout_marginEnd="-30dp"
+                    android:layout_marginTop="5dp"
+                    android:orientation="vertical"
+                    android:background="@drawable/line" />
+
+
+
+                <TextView
+                    android:id="@+id/access_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:textColor="#FFFFFF"
+                    android:fontFamily="sans-serif-light"
+                    android:layout_marginTop="5dp" />
+
+                <LinearLayout
+                    android:id="@+id/line2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="-20dp"
+                    android:layout_marginEnd="-30dp"
+                    android:layout_marginTop="5dp"
+                    android:orientation="vertical"
+                    android:background="@drawable/line" />
+
+                <TextView
+                    android:id="@+id/address"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:textColor="#FFFFFF"
+                    android:fontFamily="sans-serif-light"
+                    android:layout_marginTop="5dp"
+                    tools:text="text" />
+
+                <LinearLayout
+                    android:id="@+id/line3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="-20dp"
+                    android:layout_marginEnd="-30dp"
+                    android:layout_marginTop="5dp"
+                    android:orientation="vertical"
+                    android:background="@drawable/line" />
+
+                <TextView
+                    android:id="@+id/band"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginStart="10dp"
+                    android:textColor="#FFFFFF"
+                    android:fontFamily="sans-serif-light"
+                    android:text="text" />
+
+                <LinearLayout
+                    android:id="@+id/line4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="-20dp"
+                    android:layout_marginEnd="-30dp"
+                    android:layout_marginTop="5dp"
+                    android:orientation="vertical"
+                    android:background="@drawable/line" />
+
+
+                <TextView
+                    android:id="@+id/barrier_free"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:textColor="#FFFFFF"
+                    android:layout_marginStart="10dp"
+                    android:fontFamily="sans-serif-light"
+                    android:text="text" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="-20dp"
+                    android:layout_marginEnd="-30dp"
+                    android:layout_marginTop="5dp"
+                    android:orientation="vertical"
+                    android:background="@drawable/line" />
+
+                <TextView
+                    android:id="@+id/budget"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:textColor="#FF0000"
+                    android:layout_marginStart="10dp"
+                    android:textSize="16dp"
+                    android:fontFamily="sans-serif-light"
+                    android:textStyle="bold"
+                    android:text="Budget" />
+
+                <TextView
+                    android:id="@+id/budget_average"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:textColor="#FFFFFF"
+                    android:layout_marginStart="10dp"
+                    android:fontFamily="sans-serif-light"
+                    android:text="Budget : " />
+                <TextView
+                    android:id="@+id/budget_code"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:textColor="#FFFFFF"
+                    android:layout_marginStart="10dp"
+                    android:fontFamily="sans-serif-light"
+                    android:text="Budget : " />
+                <TextView
+                    android:id="@+id/budget_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:textColor="#FFFFFF"
+                    android:layout_marginStart="10dp"
+                    android:fontFamily="sans-serif-light"
+                    android:text="Budget : " />
+
+
+
+                <LinearLayout
+                    android:id="@+id/line5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="-20dp"
+                    android:layout_marginEnd="-30dp"
+                    android:layout_marginTop="5dp"
+                    android:orientation="vertical"
+                    android:background="@drawable/line" />
+                <TextView
+                    android:id="@+id/budget_memo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:textColor="#FFFFFF"
+                    android:layout_marginStart="10dp"
+                    android:fontFamily="sans-serif-light"
+                    android:text="text" />
+                <LinearLayout
+                    android:id="@+id/line6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="-20dp"
+                    android:layout_marginEnd="-30dp"
+                    android:layout_marginTop="5dp"
+                    android:orientation="vertical"
+                    android:background="@drawable/line" />
+                <TextView
+                    android:id="@+id/capacity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:textColor="#FFFFFF"
+                    android:layout_marginStart="10dp"
+                    android:fontFamily="sans-serif-light"
+                    android:text="text" />
+                <LinearLayout
+                    android:id="@+id/line7"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="-20dp"
+                    android:layout_marginEnd="-30dp"
+                    android:layout_marginTop="5dp"
+                    android:orientation="vertical"
+                    android:background="@drawable/line" />
+                <TextView
+                    android:id="@+id/card"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:textColor="#FFFFFF"
+                    android:layout_marginStart="10dp"
+                    android:fontFamily="sans-serif-light"
+                    android:text="text" />
+                <LinearLayout
+                    android:id="@+id/line8"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="-20dp"
+                    android:layout_marginEnd="-30dp"
+                    android:layout_marginTop="5dp"
+                    android:orientation="vertical"
+                    android:background="@drawable/line" />
+                <TextView
+                    android:id="@+id/catch_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:textColor="#FFFFFF"
+                    android:layout_marginStart="10dp"
+                    android:fontFamily="sans-serif-light"
+                    android:text="text" />
+
+                <LinearLayout
+                    android:id="@+id/line9"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="-20dp"
+                    android:layout_marginEnd="-30dp"
+                    android:layout_marginTop="5dp"
+                    android:orientation="vertical"
+                    android:background="@drawable/line" />
+                <TextView
+                    android:id="@+id/charter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:textColor="#FFFFFF"
+                    android:layout_marginStart="10dp"
+                    android:fontFamily="sans-serif-light"
+                    android:text="text" />
+                <LinearLayout
+                    android:id="@+id/line10"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="-20dp"
+                    android:layout_marginEnd="-30dp"
+                    android:layout_marginTop="5dp"
+                    android:orientation="vertical"
+                    android:background="@drawable/line" />
+
+                <TextView
+                    android:id="@+id/child"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginStart="10dp"
+                    android:textColor="#FFFFFF"
+                    android:fontFamily="sans-serif-light"
+                    android:text="text" />
+
+                <LinearLayout
+                    android:id="@+id/line11"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="-20dp"
+                    android:layout_marginEnd="-30dp"
+                    android:layout_marginTop="5dp"
+                    android:orientation="vertical"
+                    android:background="@drawable/line" />
+                <TextView
+                    android:id="@+id/close"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:textColor="#FFFFFF"
+                    android:layout_marginStart="10dp"
+                    android:fontFamily="sans-serif-light"
+                    android:text="text" />
+
+                <LinearLayout
+                    android:id="@+id/line12"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="-20dp"
+                    android:layout_marginEnd="-30dp"
+                    android:layout_marginTop="5dp"
+                    android:orientation="vertical"
+                    android:background="@drawable/line" />
+                <TextView
+                    android:id="@+id/course"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:textColor="#FFFFFF"
+                    android:layout_marginStart="10dp"
+                    android:fontFamily="sans-serif-light"
+                    android:text="text" />
+                <LinearLayout
+                    android:id="@+id/line13"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="-20dp"
+                    android:layout_marginEnd="-30dp"
+                    android:layout_marginTop="5dp"
+                    android:orientation="vertical"
+                    android:background="@drawable/line" />
+                <TextView
+                    android:id="@+id/english"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:textColor="#FFFFFF"
+                    android:layout_marginStart="10dp"
+                    android:fontFamily="sans-serif-light"
+                    android:text="text" />
+
+                <LinearLayout
+                    android:id="@+id/line14"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="-20dp"
+                    android:layout_marginEnd="-30dp"
+                    android:layout_marginTop="5dp"
+                    android:orientation="vertical"
+                    android:background="@drawable/line" />
+                <TextView
+                    android:id="@+id/free_drink"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginStart="10dp"
+                    android:textColor="#FFFFFF"
+                    android:fontFamily="sans-serif-light"
+                    android:text="text" />
+                <LinearLayout
+                    android:id="@+id/line15"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="-20dp"
+                    android:layout_marginEnd="-30dp"
+                    android:layout_marginTop="5dp"
+                    android:orientation="vertical"
+                    android:background="@drawable/line" />
+
+                <TextView
+                    android:id="@+id/free_food"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:textColor="#FFFFFF"
+                    android:layout_marginStart="10dp"
+                    android:fontFamily="sans-serif-light"
+                    android:text="text" />
+                <LinearLayout
+                    android:id="@+id/line16"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="-20dp"
+                    android:layout_marginEnd="-30dp"
+                    android:layout_marginTop="5dp"
+                    android:orientation="vertical"
+                    android:background="@drawable/line" />
+
+                <TextView
+                    android:id="@+id/genre"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:textColor="#FF0000"
+                    android:layout_marginStart="10dp"
+                    android:textSize="16dp"
+                    android:fontFamily="sans-serif-light"
+                    android:textStyle="bold"
+                    android:text="Genre" />
+
+                <TextView
+                    android:id="@+id/genre_catch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:textColor="#FFFFFF"
+                    android:layout_marginStart="10dp"
+                    android:fontFamily="sans-serif-light"
+                    android:text="Budget : " />
+                <TextView
+                    android:id="@+id/genre_code"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:textColor="#FFFFFF"
+                    android:layout_marginStart="10dp"
+                    android:fontFamily="sans-serif-light"
+                    android:text="Budget : " />
+                <TextView
+                    android:id="@+id/genre_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:textColor="#FFFFFF"
+                    android:layout_marginStart="10dp"
+                    android:fontFamily="sans-serif-light"
+                    android:text="Budget : " />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="-20dp"
+                    android:layout_marginEnd="-30dp"
+                    android:layout_marginTop="5dp"
+                    android:orientation="vertical"
+                    android:background="@drawable/line" />
+                <TextView
+                    android:id="@+id/horigotatsu"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginStart="10dp"
+                    android:textColor="#FFFFFF"
+                    android:fontFamily="sans-serif-light"
+                    android:text="text" />
+                <LinearLayout
+                    android:id="@+id/line17"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="-20dp"
+                    android:layout_marginEnd="-30dp"
+                    android:layout_marginTop="5dp"
+                    android:orientation="vertical"
+                    android:background="@drawable/line" />
+
+                <TextView
+                    android:id="@+id/karaoke"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginStart="10dp"
+                    android:textColor="#FFFFFF"
+                    android:fontFamily="sans-serif-light"
+                    android:text="text" />
+                <LinearLayout
+                    android:id="@+id/line18"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="-20dp"
+                    android:layout_marginEnd="-30dp"
+                    android:layout_marginTop="5dp"
+                    android:orientation="vertical"
+                    android:background="@drawable/line" />
+                <TextView
+                    android:id="@+id/ktai_coupon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:textColor="#FFFFFF"
+                    android:fontFamily="sans-serif-light"
+                    android:text="text"
+                    android:layout_marginStart="10dp" />
+                <LinearLayout
+                    android:id="@+id/line19"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="-20dp"
+                    android:layout_marginEnd="-30dp"
+                    android:layout_marginTop="5dp"
+                    android:orientation="vertical"
+                    android:background="@drawable/line" />
+
+                <TextView
+                    android:id="@+id/large_area"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:textColor="#FF0000"
+                    android:layout_marginStart="10dp"
+                    android:textSize="16dp"
+                    android:fontFamily="sans-serif-light"
+                    android:textStyle="bold"
+                    android:text="Large Area" />
+
+
+                <TextView
+                    android:id="@+id/large_area_code"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:textColor="#FFFFFF"
+                    android:layout_marginStart="10dp"
+                    android:fontFamily="sans-serif-light"
+                    android:text="Budget : " />
+                <TextView
+                    android:id="@+id/large_area_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:textColor="#FFFFFF"
+                    android:layout_marginStart="10dp"
+                    android:fontFamily="sans-serif-light"
+                    android:text="Budget : " />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="-20dp"
+                    android:layout_marginEnd="-30dp"
+                    android:layout_marginTop="5dp"
+                    android:orientation="vertical"
+                    android:background="@drawable/line" />
+
+                <TextView
+                    android:id="@+id/large_service_area"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:textColor="#FF0000"
+                    android:layout_marginStart="10dp"
+                    android:textSize="16dp"
+                    android:fontFamily="sans-serif-light"
+                    android:textStyle="bold"
+                    android:text="Large Service Area" />
+
+
+                <TextView
+                    android:id="@+id/large_service_code"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:textColor="#FFFFFF"
+                    android:layout_marginStart="10dp"
+                    android:fontFamily="sans-serif-light"
+                    android:text="Budget : " />
+                <TextView
+                    android:id="@+id/large_service_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:textColor="#FFFFFF"
+                    android:layout_marginStart="10dp"
+                    android:fontFamily="sans-serif-light"
+                    android:text="Budget : " />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="-20dp"
+                    android:layout_marginEnd="-30dp"
+                    android:layout_marginTop="5dp"
+                    android:orientation="vertical"
+                    android:background="@drawable/line" />
+
+
+                <TextView
+                    android:id="@+id/lat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:textColor="#FFFFFF"
+                    android:fontFamily="sans-serif-light"
+                    android:layout_marginStart="10dp"
+                    android:text="text" />
+                <LinearLayout
+                    android:id="@+id/line20"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="-20dp"
+                    android:layout_marginEnd="-30dp"
+                    android:layout_marginTop="5dp"
+                    android:orientation="vertical"
+                    android:background="@drawable/line" />
+                <TextView
+                    android:id="@+id/lng"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginStart="10dp"
+                    android:textColor="#FFFFFF"
+                    android:fontFamily="sans-serif-light"
+                    android:text="text" />
+                <LinearLayout
+                    android:id="@+id/line21"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="-20dp"
+                    android:layout_marginEnd="-30dp"
+                    android:layout_marginTop="5dp"
+                    android:orientation="vertical"
+                    android:background="@drawable/line" />
+                <TextView
+                    android:id="@+id/lunch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:textColor="#FFFFFF"
+                    android:fontFamily="sans-serif-light"
+                    android:layout_marginStart="10dp"
+                    android:text="text" />
+                <LinearLayout
+                    android:id="@+id/line23"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="-20dp"
+                    android:layout_marginEnd="-30dp"
+                    android:layout_marginTop="5dp"
+                    android:orientation="vertical"
+                    android:background="@drawable/line" />
+                <TextView
+                    android:id="@+id/middle_area"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:textColor="#FF0000"
+                    android:layout_marginStart="10dp"
+                    android:textSize="16dp"
+                    android:fontFamily="sans-serif-light"
+                    android:textStyle="bold"
+                    android:text="Middle Area" />
+
+
+                <TextView
+                    android:id="@+id/middle_area_code"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:textColor="#FFFFFF"
+                    android:layout_marginStart="10dp"
+                    android:fontFamily="sans-serif-light"
+                    android:text="Budget : " />
+                <TextView
+                    android:id="@+id/middle_area_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:textColor="#FFFFFF"
+                    android:layout_marginStart="10dp"
+                    android:fontFamily="sans-serif-light"
+                    android:text="Budget : " />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="-20dp"
+                    android:layout_marginEnd="-30dp"
+                    android:layout_marginTop="5dp"
+                    android:orientation="vertical"
+                    android:background="@drawable/line" />
+                <TextView
+                    android:id="@+id/midnight"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:textColor="#FFFFFF"
+                    android:layout_marginStart="10dp"
+                    android:fontFamily="sans-serif-light"
+                    android:text="text" />
+                <LinearLayout
+                    android:id="@+id/line24"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="-20dp"
+                    android:layout_marginEnd="-30dp"
+                    android:layout_marginTop="5dp"
+                    android:orientation="vertical"
+                    android:background="@drawable/line" />
+
+                <TextView
+                    android:id="@+id/mobile_access"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:textColor="#FFFFFF"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="sans-serif-light"
+                    android:text="text" />
+                <LinearLayout
+                    android:id="@+id/line25"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="-20dp"
+                    android:layout_marginEnd="-30dp"
+                    android:layout_marginTop="5dp"
+                    android:orientation="vertical"
+                    android:background="@drawable/line" />
+                <TextView
+                    android:id="@+id/name_kana"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:textColor="#FFFFFF"
+                    android:layout_marginStart="10dp"
+                    android:fontFamily="sans-serif-light"
+                    android:text="text" />
+                <LinearLayout
+                    android:id="@+id/line26"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="-20dp"
+                    android:layout_marginEnd="-30dp"
+                    android:layout_marginTop="5dp"
+                    android:orientation="vertical"
+                    android:background="@drawable/line" />
+                <TextView
+                    android:id="@+id/non_smoking"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:textColor="#FFFFFF"
+                    android:layout_marginStart="10dp"
+                    android:fontFamily="sans-serif-light"
+                    android:text="text" />
+                <LinearLayout
+                    android:id="@+id/line27"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="-20dp"
+                    android:layout_marginEnd="-30dp"
+                    android:layout_marginTop="5dp"
+                    android:orientation="vertical"
+                    android:background="@drawable/line" />
+                <TextView
+                    android:id="@+id/open"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:textColor="#FFFFFF"
+                    android:layout_marginStart="10dp"
+                    android:fontFamily="sans-serif-light"
+                    android:text="text" />
+                <LinearLayout
+                    android:id="@+id/line28"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="-20dp"
+                    android:layout_marginEnd="-30dp"
+                    android:layout_marginTop="5dp"
+                    android:orientation="vertical"
+                    android:background="@drawable/line" />
+                <TextView
+                    android:id="@+id/other_memo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginStart="10dp"
+                    android:textColor="#FFFFFF"
+                    android:fontFamily="sans-serif-light"
+                    android:text="text" />
+                <LinearLayout
+                    android:id="@+id/line29"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="-20dp"
+                    android:layout_marginEnd="-30dp"
+                    android:layout_marginTop="5dp"
+                    android:orientation="vertical"
+                    android:background="@drawable/line" />
+
+                <TextView
+                    android:id="@+id/parking"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginStart="10dp"
+                    android:textColor="#FFFFFF"
+                    android:fontFamily="sans-serif-light"
+                    android:text="text" />
+                <LinearLayout
+                    android:id="@+id/line30"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="-20dp"
+                    android:layout_marginEnd="-30dp"
+                    android:layout_marginTop="5dp"
+                    android:orientation="vertical"
+                    android:background="@drawable/line" />
+                <TextView
+                    android:id="@+id/party_capacity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:textColor="#FFFFFF"
+                    android:layout_marginStart="10dp"
+                    android:fontFamily="sans-serif-light"
+                    android:text="text" />
+                <LinearLayout
+                    android:id="@+id/line31"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="-20dp"
+                    android:layout_marginEnd="-30dp"
+                    android:layout_marginTop="5dp"
+                    android:orientation="vertical"
+                    android:background="@drawable/line" />
+                <TextView
+                    android:id="@+id/pet"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:textColor="#FFFFFF"
+                    android:layout_marginStart="10dp"
+                    android:fontFamily="sans-serif-light"
+                    android:text="text" />
+                <LinearLayout
+                    android:id="@+id/line32"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="-20dp"
+                    android:layout_marginEnd="-30dp"
+                    android:layout_marginTop="5dp"
+                    android:orientation="vertical"
+                    android:background="@drawable/line" />
+                <TextView
+                    android:id="@+id/private_room"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginStart="10dp"
+                    android:textColor="#FFFFFF"
+                    android:fontFamily="sans-serif-light"
+                    android:text="text" />
+
+
+                <LinearLayout
+                    android:id="@+id/line33"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="-20dp"
+                    android:layout_marginEnd="-30dp"
+                    android:layout_marginTop="5dp"
+                    android:orientation="vertical"
+                    android:background="@drawable/line" />
+                <TextView
+                    android:id="@+id/service_area"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:textColor="#FF0000"
+                    android:layout_marginStart="10dp"
+                    android:textSize="16dp"
+                    android:fontFamily="sans-serif-light"
+                    android:textStyle="bold"
+                    android:text="Service Area" />
+
+
+                <TextView
+                    android:id="@+id/service_area_code"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:textColor="#FFFFFF"
+                    android:layout_marginStart="10dp"
+                    android:fontFamily="sans-serif-light"
+                    android:text="Budget : " />
+                <TextView
+                    android:id="@+id/service_area_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:textColor="#FFFFFF"
+                    android:layout_marginStart="10dp"
+                    android:fontFamily="sans-serif-light"
+                    android:text="Budget : " />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="-20dp"
+                    android:layout_marginEnd="-30dp"
+                    android:layout_marginTop="5dp"
+                    android:orientation="vertical"
+                    android:background="@drawable/line" />
+
+
+                <TextView
+                    android:id="@+id/shop_details_memo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginStart="10dp"
+                    android:textColor="#FFFFFF"
+                    android:fontFamily="sans-serif-light"
+                    android:text="text" />
+                <LinearLayout
+                    android:id="@+id/line34"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="-20dp"
+                    android:layout_marginEnd="-30dp"
+                    android:layout_marginTop="5dp"
+                    android:orientation="vertical"
+                    android:background="@drawable/line" />
+                <TextView
+                    android:id="@+id/show"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginStart="10dp"
+                    android:textColor="#FFFFFF"
+                    android:fontFamily="sans-serif-light"
+                    android:text="text" />
+
+
+                <LinearLayout
+                    android:id="@+id/line35"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="-20dp"
+                    android:layout_marginEnd="-30dp"
+                    android:layout_marginTop="5dp"
+                    android:orientation="vertical"
+                    android:background="@drawable/line" />
+
+                <TextView
+                    android:id="@+id/small_area"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:textColor="#FF0000"
+                    android:layout_marginStart="10dp"
+                    android:textSize="16dp"
+                    android:fontFamily="sans-serif-light"
+                    android:textStyle="bold"
+                    android:text="Small  Area" />
+
+
+                <TextView
+                    android:id="@+id/small_area_code"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:textColor="#FFFFFF"
+                    android:layout_marginStart="10dp"
+                    android:fontFamily="sans-serif-light"
+                    android:text="Budget : " />
+                <TextView
+                    android:id="@+id/small_area_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:textColor="#FFFFFF"
+                    android:layout_marginStart="10dp"
+                    android:fontFamily="sans-serif-light"
+                    android:text="Budget : " />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="-20dp"
+                    android:layout_marginEnd="-30dp"
+                    android:layout_marginTop="5dp"
+                    android:orientation="vertical"
+                    android:background="@drawable/line" />
+                <TextView
+                    android:id="@+id/station_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginStart="10dp"
+                    android:textColor="#FFFFFF"
+                    android:fontFamily="sans-serif-light"
+                    android:text="text" />
+                <LinearLayout
+                    android:id="@+id/line36"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="-20dp"
+                    android:layout_marginEnd="-30dp"
+                    android:layout_marginTop="5dp"
+                    android:orientation="vertical"
+                    android:background="@drawable/line" />
+
+                <TextView
+                    android:id="@+id/sub_genre"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:textColor="#FF0000"
+                    android:layout_marginStart="10dp"
+                    android:textSize="16dp"
+                    android:fontFamily="sans-serif-light"
+                    android:textStyle="bold"
+                    android:text="Sub Genre" />
+
+
+                <TextView
+                    android:id="@+id/sub_genre_code"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:textColor="#FFFFFF"
+                    android:layout_marginStart="10dp"
+                    android:fontFamily="sans-serif-light"
+                    android:text="Budget : " />
+                <TextView
+                    android:id="@+id/sub_genre_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:textColor="#FFFFFF"
+                    android:layout_marginStart="10dp"
+                    android:fontFamily="sans-serif-light"
+                    android:text="Budget : " />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="-20dp"
+                    android:layout_marginEnd="-30dp"
+                    android:layout_marginTop="5dp"
+                    android:orientation="vertical"
+                    android:background="@drawable/line" />
+                <TextView
+                    android:id="@+id/tatami"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginStart="10dp"
+                    android:textColor="#FFFFFF"
+                    android:fontFamily="sans-serif-light"
+                    android:text="text" />
+                <LinearLayout
+                    android:id="@+id/line37"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="-20dp"
+                    android:layout_marginEnd="-30dp"
+                    android:layout_marginTop="5dp"
+                    android:orientation="vertical"
+                    android:background="@drawable/line" />
+
+                <TextView
+                    android:id="@+id/tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginStart="10dp"
+                    android:textColor="#FFFFFF"
+                    android:fontFamily="sans-serif-light"
+                    android:text="text" />
+                <LinearLayout
+                    android:id="@+id/line38"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="-20dp"
+                    android:layout_marginEnd="-30dp"
+                    android:layout_marginTop="5dp"
+                    android:orientation="vertical"
+                    android:background="@drawable/line" />
+
+                <TextView
+                    android:id="@+id/wedding"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:textColor="#FFFFFF"
+                    android:layout_marginStart="10dp"
+                    android:fontFamily="sans-serif-light"
+                    android:text="text" />
+                <LinearLayout
+                    android:id="@+id/line39"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="-20dp"
+                    android:layout_marginEnd="-30dp"
+                    android:layout_marginTop="5dp"
+                    android:orientation="vertical"
+                    android:background="@drawable/line" />
+                <TextView
+                    android:id="@+id/wifi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginStart="10dp"
+                    android:textColor="#FFFFFF"
+                    android:fontFamily="sans-serif-light"
+                    android:text="text" />
+
+
+            </LinearLayout>
+
+        </ScrollView>
+
+    </LinearLayout>
+
+
+</FrameLayout>

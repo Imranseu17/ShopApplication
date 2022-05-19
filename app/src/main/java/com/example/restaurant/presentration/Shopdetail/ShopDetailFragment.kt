@@ -14,7 +14,7 @@ import com.bumptech.glide.Glide
 import com.example.restaurant.R
 import com.example.restaurant.data.entities.Shop
 import com.example.restaurant.databinding.ShopDetailFragmentBinding
-import com.example.restaurant.presentration.RestaurantLocationActivity
+import com.example.restaurant.presentration.nearbyPlaces.RestaurantLocationActivity
 import com.example.restaurant.usecase.Constant
 import com.example.restaurant.usecase.Resource
 import com.example.restaurant.usecase.autoCleared

@@ -9,9 +9,9 @@ android {
 
     signingConfigs {
         config {
-            keyAlias 'restaurant'
+            keyAlias 'restaurants'
             keyPassword '123456'
-            storeFile file('/home/imran/Downloads/RestaurantApp/restaurant')
+            storeFile file('/home/imran/Downloads/RestaurantApp/restaurants')
             storePassword '123456'
         }
     }

@@ -1,4 +1,4 @@
-package com.example.restaurant.presentration
+package com.example.restaurant.presentration.activities
 
 import android.content.Intent
 import android.os.Bundle
@@ -10,7 +10,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
 import com.example.restaurant.R
 import com.example.restaurant.databinding.ActivityMainBinding
-import com.example.restaurant.presentration.map.UserLocationActivity
+import com.example.restaurant.presentration.restaurants.RestaurantLocations
 import com.example.restaurant.usecase.BottomNavBar
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -80,7 +80,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.mapLocation.setOnClickListener {
-            startActivity(Intent(this,UserLocationActivity::class.java))
+            startActivity(Intent(this, RestaurantLocations::class.java))
         }
 
     }
