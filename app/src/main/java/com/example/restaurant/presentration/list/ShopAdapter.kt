@@ -1,18 +1,27 @@
 package com.example.restaurant.presentration.list
 
 import android.annotation.SuppressLint
+import android.content.ContentValues.TAG
 import android.content.Context
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.net.Uri
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Filter
 import androidx.recyclerview.widget.RecyclerView
+import com.android.volley.toolbox.ImageLoader
 import com.bumptech.glide.Glide
 import com.example.restaurant.data.entities.Shop
 import com.example.restaurant.databinding.ItemShopBinding
-import com.example.restaurant.presentration.ShopSearch.ShopsAdapter
+import java.io.BufferedInputStream
+import java.io.IOException
+import java.io.InputStream
+import java.net.URL
+import java.net.URLConnection
 import java.util.*
-import kotlin.collections.ArrayList
+
 
 class ShopAdapter(): RecyclerView.Adapter<ShopViewHolder>()
 {
@@ -74,6 +83,9 @@ class ShopViewHolder(private val itemBinding: ItemShopBinding,
         Glide.with(itemBinding.root)
             .load(item.photo?.mobile?.longSize)
             .into(itemBinding.image)
+
+
+
     }
 
     override fun onClick(v: View?) {

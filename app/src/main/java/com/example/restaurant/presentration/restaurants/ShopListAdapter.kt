@@ -3,6 +3,8 @@ package com.example.restaurant.presentration
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
+import android.net.Uri
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -63,6 +65,8 @@ class ShopViewHolder(private val itemBinding: ItemShopBinding) :
         Glide.with(itemBinding.root)
             .load(item.photo?.mobile?.longSize)
             .into(itemBinding.image)
+       // itemBinding.image.setImageURI(Uri.parse(item.photo?.mobile?.longSize))
+        Log.e("ImageURL: ", item.photo?.mobile?.longSize!!)
     }
 
 

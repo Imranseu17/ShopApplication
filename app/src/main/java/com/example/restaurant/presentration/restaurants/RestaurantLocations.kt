@@ -1,16 +1,24 @@
 package com.example.restaurant.presentration.restaurants
 
 
+
+
+
+import android.app.Dialog
 import android.graphics.Color
 import android.location.Address
 import android.location.Geocoder
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.view.Window
+import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.bumptech.glide.Glide
 import com.example.restaurant.R
 import com.example.restaurant.data.entities.Shop
 import com.example.restaurant.databinding.ActivityRestaurantLocationsBinding
@@ -35,6 +43,20 @@ class RestaurantLocations : AppCompatActivity() ,OnMapReadyCallback{
     private lateinit var adapter: ShopListAdapter
     private  var list = ArrayList<Shop>()
     private lateinit var latLng:LatLng
+    var homeplace: Shop? = null
+    var latlngs: ArrayList<LatLng> = ArrayList()
+
+    val PATTERN_DASH_LENGTH_PX = 20
+    val PATTERN_GAP_LENGTH_PX = 20
+    val DOT: PatternItem = Dot()
+    val DASH: PatternItem = Dash(PATTERN_DASH_LENGTH_PX.toFloat())
+    val GAP: PatternItem = Gap(PATTERN_GAP_LENGTH_PX.toFloat())
+    val PATTERN_POLYGON_ALPHA = Arrays.asList(GAP, DOT)
+    private var text:TextView? = null
+    private var imageview:ImageView?= null
+    private var dialog:Dialog? = null
+    private val markers = arrayListOf<Marker>()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -57,14 +79,17 @@ class RestaurantLocations : AppCompatActivity() ,OnMapReadyCallback{
 
     override fun onMapReady(googleMap: GoogleMap) {
         this.googleMap = googleMap;
+       // googleMap.setOnMarkerClickListener(this)
         setResult()
-        binding.currentLocationImageButton.setOnClickListener{
-            this.googleMap!!.addMarker(MarkerOptions().position(
-                LatLng(35.669220,
-                    139.761457)).title(getCompleteAddressString(35.669220,
-                139.761457)).icon(BitmapDescriptorFactory.
-            defaultMarker(BitmapDescriptorFactory.HUE_BLUE)))
-        }
+  //      googleMap?.setOnMarkerClickListener(this);
+//        binding.currentLocationImageButton.setOnClickListener{
+//            this.googleMap!!.addMarker(MarkerOptions().position(
+//                LatLng(35.669220,
+//                    139.761457)).title(getCompleteAddressString(35.669220,
+//                139.761457)).icon(BitmapDescriptorFactory.
+//            defaultMarker(BitmapDescriptorFactory.HUE_BLUE)))
+//        }
+
 
     }
 
@@ -123,49 +148,45 @@ class RestaurantLocations : AppCompatActivity() ,OnMapReadyCallback{
                     binding.progressBar.visibility = View.GONE
                     binding.shimmerViewContainer.visibility = View.GONE
                     if (!it.data.isNullOrEmpty()){
+                        googleMap?.clear()
+                        Log.e("size: ",""+it.data.size)
                         list = it.data as ArrayList<Shop>
                         adapter.setItems(it.data)
-
-                    }
-                    if (!it.data.isNullOrEmpty()){
-                        googleMap?.clear()
-                        for (i in 1 .. it.data.size){
-                            val markerOptions = MarkerOptions()
-
+                        val size = it.data.size-1
+                        for (i in 0..size){
                             // Getting a place from the places list
-                            val hmPlace = it.data.get(i-1)
-
-
-                            // Getting latitude of the place
-                            val lat = hmPlace.lat
-
-                            // Getting longitude of the place
-                            val lng = hmPlace.lng
-
-                            animateCamera(lat!!,lng!!)
-
+                            homeplace = it.data.get(i)
+                            animateCamera(homeplace!!.lat!!,homeplace!!.lng!!)
                             // Getting vicinity
-                            latLng = LatLng(lat, lng)
-
-
-
+                            latLng = LatLng(homeplace!!.lat!!,homeplace!!.lng!!)
+                            dialog = Dialog(this)
+                            dialog?.requestWindowFeature(Window.FEATURE_NO_TITLE)
+                            dialog?.setCancelable(true)
+                            dialog?.setContentView(R.layout.markerlayout)
+                            text = dialog?.findViewById(R.id.address_location)
+                            imageview = dialog?.findViewById(R.id.image_shop)
+                            text?.text = homeplace!!.address
+                            Log.e("message: ",text?.text.toString())
+                            Glide.with(this)
+                                .load(homeplace!!.photo?.mobile?.longSize)
+                                .into(imageview!!)
                             // Setting the position for the marker
-                            markerOptions.position(latLng)
-                            markerOptions.title(getCompleteAddressString(hmPlace.lat!!,hmPlace.lng!!))
-                            markerOptions.icon(BitmapDescriptorFactory.
-                            defaultMarker(BitmapDescriptorFactory.HUE_MAGENTA))
+                            latlngs.add(latLng)
+                            markers.add(
+                                createMarker(homeplace!!.lat!!,homeplace!!.lng!!,
+                                    homeplace!!.address!!,homeplace!!.name)!!
+                            )
 
-                            // Placing a marker on the touched position
-                            googleMap!!.addMarker(markerOptions)
-                            googleMap!!.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng,19.65f));
 
                         }
 
-                        drawCircle(latLng)
-                      //  googleMap!!.getUiSettings().setZoomControlsEnabled(true);
 
-
+                        val rectOptions = PolylineOptions().addAll(latlngs).color(Color.RED)
+                        rectOptions.pattern(PATTERN_POLYGON_ALPHA)
+//                        googleMap!!.addPolyline(rectOptions)
+//                        drawCircle(latLng)
                     }
+
                 }
                 Resource.Status.ERROR ->{
                     Toast.makeText(this, it.message, Toast.LENGTH_SHORT).show()
@@ -186,7 +207,7 @@ class RestaurantLocations : AppCompatActivity() ,OnMapReadyCallback{
         // Specifying the center of the circle
         circleOptions.center(point)
         // Radius of the circle
-        circleOptions.radius(34.0)
+        circleOptions.radius(40.0)
         // Border color of the circle
         circleOptions.strokeColor(Color.BLACK)
         // Fill color of the circle
@@ -208,6 +229,31 @@ class RestaurantLocations : AppCompatActivity() ,OnMapReadyCallback{
         super.onResume()
         binding.shimmerViewContainer.startShimmerAnimation()
     }
+
+//    override fun onMarkerClick(p0: Marker?): Boolean {
+//       dialog?.show()
+//        return true
+//    }
+
+    protected fun createMarker(
+        latitude: Double,
+        longitude: Double,
+        title: String?,
+        snippet: String?,
+    ): Marker? {
+        googleMap?.animateCamera(CameraUpdateFactory.newLatLngZoom(LatLng(latitude, longitude), 9f))
+     return googleMap?.addMarker(
+            MarkerOptions()
+                .position(LatLng(latitude, longitude))
+                .anchor(0.5f, 0.5f)
+                .title(title)
+                .snippet(snippet)
+                .icon(BitmapDescriptorFactory.
+            defaultMarker(BitmapDescriptorFactory.HUE_MAGENTA))
+        )
+
+    }
+
 
 }
 

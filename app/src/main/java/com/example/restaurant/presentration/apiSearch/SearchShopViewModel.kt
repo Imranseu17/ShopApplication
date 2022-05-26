@@ -17,7 +17,7 @@ class SearchShopViewModel @ViewModelInject constructor(
 
 
     private val _character = _keyword.switchMap { keyword ->
-        repository.searchShopList("f5c06c8896e2d2d4",keyword,"json")
+        repository.searchShopList("f5c06c8896e2d2d4","青物横丁","json")
     }
     val character: LiveData<Resource<List<Shop>>> = _character
 

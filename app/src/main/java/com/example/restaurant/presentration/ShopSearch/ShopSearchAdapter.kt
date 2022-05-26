@@ -65,8 +65,8 @@ class ShopsAdapter() :
                     val filteredList: ArrayList<Shop> = ArrayList()
                     for (row in itemList) {
 
-                        if (row.name!!.toLowerCase()
-                                .contains(charString.lowercase(Locale.getDefault()))
+                        if (row.name!!
+                                .contains(charSequence)
                             || row.address
                                 !!.contains(charSequence)
                             ||row.stationName
