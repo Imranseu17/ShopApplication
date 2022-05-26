@@ -1,24 +1,20 @@
 package com.example.restaurant.presentration.restaurants
 
 
-
-
-
-import android.app.Dialog
+import android.content.Context
 import android.graphics.Color
 import android.location.Address
 import android.location.Geocoder
 import android.os.Bundle
 import android.util.Log
+import android.view.LayoutInflater
 import android.view.View
-import android.view.Window
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.bumptech.glide.Glide
 import com.example.restaurant.R
 import com.example.restaurant.data.entities.Shop
 import com.example.restaurant.databinding.ActivityRestaurantLocationsBinding
@@ -30,6 +26,7 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.*
+import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.*
 
@@ -52,10 +49,8 @@ class RestaurantLocations : AppCompatActivity() ,OnMapReadyCallback{
     val DASH: PatternItem = Dash(PATTERN_DASH_LENGTH_PX.toFloat())
     val GAP: PatternItem = Gap(PATTERN_GAP_LENGTH_PX.toFloat())
     val PATTERN_POLYGON_ALPHA = Arrays.asList(GAP, DOT)
-    private var text:TextView? = null
-    private var imageview:ImageView?= null
-    private var dialog:Dialog? = null
-    private val markers = arrayListOf<Marker>()
+    var massage:ArrayList<String> = ArrayList()
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -81,6 +76,11 @@ class RestaurantLocations : AppCompatActivity() ,OnMapReadyCallback{
         this.googleMap = googleMap;
        // googleMap.setOnMarkerClickListener(this)
         setResult()
+        binding.currentLocationImageButton.
+        setOnClickListener {
+            animateCamera(homeplace?.lat!!,homeplace?.lng!!)
+        }
+
   //      googleMap?.setOnMarkerClickListener(this);
 //        binding.currentLocationImageButton.setOnClickListener{
 //            this.googleMap!!.addMarker(MarkerOptions().position(
@@ -153,38 +153,35 @@ class RestaurantLocations : AppCompatActivity() ,OnMapReadyCallback{
                         list = it.data as ArrayList<Shop>
                         adapter.setItems(it.data)
                         val size = it.data.size-1
-                        for (i in 0..size){
+                        for (i in 0..size) {
                             // Getting a place from the places list
                             homeplace = it.data.get(i)
-                            animateCamera(homeplace!!.lat!!,homeplace!!.lng!!)
+                            animateCamera(homeplace!!.lat!!, homeplace!!.lng!!)
                             // Getting vicinity
-                            latLng = LatLng(homeplace!!.lat!!,homeplace!!.lng!!)
-                            dialog = Dialog(this)
-                            dialog?.requestWindowFeature(Window.FEATURE_NO_TITLE)
-                            dialog?.setCancelable(true)
-                            dialog?.setContentView(R.layout.markerlayout)
-                            text = dialog?.findViewById(R.id.address_location)
-                            imageview = dialog?.findViewById(R.id.image_shop)
-                            text?.text = homeplace!!.address
-                            Log.e("message: ",text?.text.toString())
-                            Glide.with(this)
-                                .load(homeplace!!.photo?.mobile?.longSize)
-                                .into(imageview!!)
+                            latLng = LatLng(homeplace!!.lat!!, homeplace!!.lng!!)
+
+                            val marker = googleMap?.addMarker(MarkerOptions().
+                            position(latLng).
+                            icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_MAGENTA)))
+                            marker?.tag = it.data.get(i)
+                            var latLng = LatLng(it.data.get(0).lat!!, it.data.get((0)).lng!!)
+                            googleMap?.animateCamera(CameraUpdateFactory.
+                            newLatLngZoom(latLng, 11f))
+                            if(it.data.size !=0){
+
+                               val testInfoWindowAdapter = TestInfoWindowAdapter(this)
+                                googleMap?.setInfoWindowAdapter(testInfoWindowAdapter)
+                            }
                             // Setting the position for the marker
+
                             latlngs.add(latLng)
-                            markers.add(
-                                createMarker(homeplace!!.lat!!,homeplace!!.lng!!,
-                                    homeplace!!.address!!,homeplace!!.name)!!
-                            )
-
-
+                            massage.add(homeplace?.address!!)
                         }
-
 
                         val rectOptions = PolylineOptions().addAll(latlngs).color(Color.RED)
                         rectOptions.pattern(PATTERN_POLYGON_ALPHA)
-//                        googleMap!!.addPolyline(rectOptions)
-//                        drawCircle(latLng)
+                        googleMap!!.addPolyline(rectOptions)
+                        drawCircle(latLng)
                     }
 
                 }
@@ -214,6 +211,9 @@ class RestaurantLocations : AppCompatActivity() ,OnMapReadyCallback{
         circleOptions.fillColor(0x30ff0000)
         // Border width of the circle
         circleOptions.strokeWidth(2f)
+        circleOptions.strokePattern(Collections.singletonList(Dot()) as List<PatternItem>?)
+        circleOptions.zIndex(1f)
+
         // Adding the circle to the GoogleMap
         googleMap!!.addCircle(circleOptions)
     }
@@ -230,31 +230,64 @@ class RestaurantLocations : AppCompatActivity() ,OnMapReadyCallback{
         binding.shimmerViewContainer.startShimmerAnimation()
     }
 
-//    override fun onMarkerClick(p0: Marker?): Boolean {
-//       dialog?.show()
-//        return true
-//    }
 
-    protected fun createMarker(
-        latitude: Double,
-        longitude: Double,
-        title: String?,
-        snippet: String?,
-    ): Marker? {
-        googleMap?.animateCamera(CameraUpdateFactory.newLatLngZoom(LatLng(latitude, longitude), 9f))
-     return googleMap?.addMarker(
-            MarkerOptions()
-                .position(LatLng(latitude, longitude))
-                .anchor(0.5f, 0.5f)
-                .title(title)
-                .snippet(snippet)
-                .icon(BitmapDescriptorFactory.
-            defaultMarker(BitmapDescriptorFactory.HUE_MAGENTA))
-        )
+
+    }
+
+class TestInfoWindowAdapter : GoogleMap.InfoWindowAdapter{
+    private lateinit var context:Context
+
+    constructor(context: Context) {
+        this.context = context
+    }
+
+    override fun getInfoWindow(args: Marker?): View? {
+        return null
+    }
+
+    override fun getInfoContents(p0: Marker?): View? {
+        val inflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+        val view: View = inflater.inflate(R.layout.markerlayout, null)
+       val text = view.findViewById(R.id.address_location) as TextView
+       val imageview = view.findViewById(R.id.image_shop) as  ImageView
+
+        val shop:Shop = p0?.tag as Shop
+        val image_URL = shop.photo?.mobile?.longSize
+        Log.e("message: ", text.text.toString())
+        text.text = shop.address
+            Picasso.get().load(image_URL).
+        into(imageview,MarkerCallBack(p0))
+
+        return view
+    }
+
+    class MarkerCallBack: com.squareup.picasso.Callback{
+       var marker:Marker
+
+        constructor(marker: Marker) {
+            this.marker = marker
+        }
+
+        override fun onSuccess() {
+            if(marker != null && marker.isInfoWindowShown()){
+                marker.hideInfoWindow()
+                marker.showInfoWindow()
+            }
+        }
+
+        override fun onError(e: java.lang.Exception?) {
+            TODO("Not yet implemented")
+        }
+
 
     }
 
 
 }
+
+
+
+
+
 
 
