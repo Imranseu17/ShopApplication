@@ -109,7 +109,7 @@ class ShopsearchFragment : Fragment(),RestaurantSearchApI{
         }
             binding.searchAction.setOnClickListener {
                // binding.searchNameEt.setText("銀座")
-                  //  binding.searchNameEt.setText("青物横丁")
+                  // binding.searchNameEt.setText("青物横丁")
                     if(checkConnection()){
                         restaurantSearchApI.attemptSearchByKeyword(
                             "f5c06c8896e2d2d4",binding.searchNameEt.text.toString(),100,"json"

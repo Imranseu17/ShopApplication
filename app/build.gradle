@@ -11,7 +11,7 @@ android {
         config {
             keyAlias 'restaurants'
             keyPassword '123456'
-            storeFile file('/home/imran/Downloads/RestaurantApp/restaurants')
+            storeFile file('/home/imran/Downloads/Restaurant_project_resource/restaurant_jar_build_apk')
             storePassword '123456'
         }
     }
